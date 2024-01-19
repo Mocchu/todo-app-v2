@@ -1,6 +1,14 @@
-import { CalendarCheck, CalendarDays, CalendarX, List } from "lucide-react";
+import {
+  CalendarCheck,
+  CalendarDays,
+  CalendarX,
+  List,
+  Plus,
+} from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { Divider, User, Button, Link } from "@nextui-org/react";
+import { Divider, User, Button, Link, useDisclosure } from "@nextui-org/react";
+import { Button as ButtonShad } from "@/components/ui/button";
+import NewProjectModal from "./NewProjectModal";
 
 export default function Sidebar({
   projects,
@@ -8,6 +16,7 @@ export default function Sidebar({
   activeProjectKey,
   setActiveProjectKey,
 }) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const svgColor = "#a8a8a8";
 
   return (
@@ -33,7 +42,7 @@ export default function Sidebar({
             <Button
               fullWidth
               variant="light"
-              startContent={<CalendarX color={svgColor} />}
+              startContent={<CalendarX color={svgColor} className="mr-1 w-5" />}
               className="flex justify-start"
             >
               Today
@@ -43,7 +52,9 @@ export default function Sidebar({
             <Button
               fullWidth
               variant="light"
-              startContent={<CalendarDays color={svgColor} />}
+              startContent={
+                <CalendarDays color={svgColor} className="mr-1 w-5" />
+              }
               className="flex justify-start"
             >
               Upcoming
@@ -53,7 +64,9 @@ export default function Sidebar({
             <Button
               fullWidth
               variant="light"
-              startContent={<CalendarCheck color={svgColor} />}
+              startContent={
+                <CalendarCheck color={svgColor} className="mr-1 w-5" />
+              }
               className="flex justify-start"
             >
               Completed
@@ -64,14 +77,26 @@ export default function Sidebar({
 
       <Divider className="my-2" />
       <nav className="w-full">
-        <h2 className="mb-2 text-sm font-semibold">Projects</h2>
+        <div className="mb-4 flex items-center justify-between gap-4">
+          <h2 className="text-sm font-semibold">Projects</h2>
+          <ButtonShad
+            onClick={onOpen}
+            size="icon"
+            variant="secondary"
+            className="h-5 w-5"
+          >
+            <Plus className="w-3" />
+          </ButtonShad>
+          <NewProjectModal isOpen={isOpen} onOpenChange={onOpenChange} />
+        </div>
+
         <ul className="flex w-full flex-col">
           {projects.map((project) => (
             <li key={project.key}>
               <Button
                 fullWidth
                 variant={project.key === activeProjectKey ? "solid" : "light"}
-                startContent={<List color={svgColor} />}
+                startContent={<List color={svgColor} className="mr-1 w-5" />}
                 className="flex justify-start"
                 onClick={() => setActiveProjectKey(project.key)}
               >

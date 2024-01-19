@@ -6,6 +6,9 @@ module.exports = {
     require("tailwindcss-animate"),
     nextui({
       layout: {
+        size: {
+          xs: "0.5rem",
+        },
         radius: {
           small: "2px", // rounded-small
           medium: "4px", // rounded-medium

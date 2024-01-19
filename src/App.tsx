@@ -22,7 +22,8 @@ export default function App() {
         },
         {
           title: "Build some projects",
-          description: "Some description",
+          description:
+            "Some long descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
           dueDate: "23/04/2024",
           priority: "Med",
           key: crypto.randomUUID(),

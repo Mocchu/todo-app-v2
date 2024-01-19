@@ -11,10 +11,6 @@ import {
 export default function TodoList({ project }) {
   const columns = [
     { key: "title", label: "Title" },
-    {
-      key: "description",
-      label: "Description",
-    },
     { key: "dueDate", label: "Due Date" },
     { key: "priority", label: "Priority" },
   ];
