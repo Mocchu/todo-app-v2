@@ -30,7 +30,7 @@ export default function Sidebar({
             isExternal
             className="text-blue-500"
           >
-            @Mocchu
+            github@Mocchu
           </Link>
         }
         className="mb-4"
@@ -87,7 +87,11 @@ export default function Sidebar({
           >
             <Plus className="w-3" />
           </ButtonShad>
-          <NewProjectModal isOpen={isOpen} onOpenChange={onOpenChange} />
+          <NewProjectModal
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            setProjects={setProjects}
+          />
         </div>
 
         <ul className="flex w-full flex-col">
