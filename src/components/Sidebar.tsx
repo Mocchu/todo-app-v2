@@ -28,7 +28,7 @@ export default function Sidebar({
             href="https://github.com/Mocchu"
             size="sm"
             isExternal
-            className="text-blue-500"
+            className="text-slate-400"
           >
             github@Mocchu
           </Link>

@@ -3,6 +3,7 @@ const { nextui } = require("@nextui-org/react");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   plugins: [
+    require("@tailwindcss/container-queries"),
     require("tailwindcss-animate"),
     nextui({
       layout: {
