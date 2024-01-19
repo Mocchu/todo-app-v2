@@ -5,8 +5,8 @@ import { Divider, User, Button, Link } from "@nextui-org/react";
 export default function Sidebar({
   projects,
   setProjects,
-  activeProject,
-  setActiveProject,
+  activeProjectKey,
+  setActiveProjectKey,
 }) {
   const svgColor = "#a8a8a8";
 
@@ -27,56 +27,60 @@ export default function Sidebar({
         className="mb-4"
       />
 
-      <ul className="flex w-full flex-col">
-        <li>
-          <Button
-            fullWidth
-            variant="light"
-            startContent={<CalendarX color={svgColor} />}
-            className="flex justify-start"
-          >
-            Today
-          </Button>
-        </li>
-        <li>
-          <Button
-            fullWidth
-            variant="light"
-            startContent={<CalendarDays color={svgColor} />}
-            className="flex justify-start"
-          >
-            Upcoming
-          </Button>
-        </li>
-        <li>
-          <Button
-            fullWidth
-            variant="light"
-            startContent={<CalendarCheck color={svgColor} />}
-            className="flex justify-start"
-          >
-            Completed
-          </Button>
-        </li>
-      </ul>
-
-      <Divider />
-      <h2>Projects</h2>
-      <ul className="flex w-full flex-col">
-        {projects.map((project) => (
-          <li key={project.key}>
+      <nav className="w-full">
+        <ul className="flex w-full flex-col">
+          <li>
             <Button
               fullWidth
-              variant={project.key === activeProject ? "solid" : "light"}
-              startContent={<List color={svgColor} />}
+              variant="light"
+              startContent={<CalendarX color={svgColor} />}
               className="flex justify-start"
-              onClick={() => setActiveProject(project.key)}
             >
-              {project.title}
+              Today
             </Button>
           </li>
-        ))}
-      </ul>
+          <li>
+            <Button
+              fullWidth
+              variant="light"
+              startContent={<CalendarDays color={svgColor} />}
+              className="flex justify-start"
+            >
+              Upcoming
+            </Button>
+          </li>
+          <li>
+            <Button
+              fullWidth
+              variant="light"
+              startContent={<CalendarCheck color={svgColor} />}
+              className="flex justify-start"
+            >
+              Completed
+            </Button>
+          </li>
+        </ul>
+      </nav>
+
+      <Divider className="my-2" />
+      <nav className="w-full">
+        <h2 className="mb-2 text-sm font-semibold">Projects</h2>
+        <ul className="flex w-full flex-col">
+          {projects.map((project) => (
+            <li key={project.key}>
+              <Button
+                fullWidth
+                variant={project.key === activeProjectKey ? "solid" : "light"}
+                startContent={<List color={svgColor} />}
+                className="flex justify-start"
+                onClick={() => setActiveProjectKey(project.key)}
+              >
+                {project.title}
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <ul className="mt-auto">
         <li>

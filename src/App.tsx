@@ -10,16 +10,41 @@ import {
 export default function App() {
   const [projects, setProjects] = useState([
     {
-      title: "Build a todo-list app",
-      key: crypto.randomUUID(),
-    },
-    {
       title: "Learn React",
       key: crypto.randomUUID(),
+      todos: [
+        {
+          title: "Watch youtube tutorials",
+          description: "Some description",
+          dueDate: "21/02/2024",
+          priority: "Low",
+          key: crypto.randomUUID(),
+        },
+        {
+          title: "Build some projects",
+          description: "Some description",
+          dueDate: "23/04/2024",
+          priority: "Med",
+          key: crypto.randomUUID(),
+        },
+      ],
+    },
+    {
+      title: "Build a todo-list app",
+      key: crypto.randomUUID(),
+      todos: [
+        {
+          title: "Scaffold the UI",
+          description: "Some description",
+          dueDate: "19/01/2024",
+          priority: "High",
+          key: crypto.randomUUID(),
+        },
+      ],
     },
   ]);
 
-  const [activeProject, setActiveProject] = useState(projects[0].key);
+  const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
 
   return (
     <div className="h-full">
@@ -28,15 +53,19 @@ export default function App() {
           <Sidebar
             projects={projects}
             setProjects={setProjects}
-            activeProject={activeProject}
-            setActiveProject={setActiveProject}
+            activeProjectKey={activeProjectKey}
+            setActiveProjectKey={setActiveProjectKey}
           />
         </ResizablePanel>
 
         <ResizableHandle withHandle />
 
         <ResizablePanel>
-          <TodoList />
+          <TodoList
+            project={projects.find(
+              (project) => project.key === activeProjectKey,
+            )}
+          />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
