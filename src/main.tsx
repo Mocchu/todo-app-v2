@@ -7,7 +7,7 @@ import { ThemeProvider } from "./components/theme-provider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <NextUIProvider>
+    <NextUIProvider className="h-full">
       <ThemeProvider>
         <App />
       </ThemeProvider>

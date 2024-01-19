@@ -2,6 +2,18 @@ const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  plugins: [
+    require("tailwindcss-animate"),
+    nextui({
+      layout: {
+        radius: {
+          small: "2px", // rounded-small
+          medium: "4px", // rounded-medium
+          large: "6px", // rounded-large
+        },
+      },
+    }),
+  ],
   darkMode: ["class"],
   content: [
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
@@ -77,5 +89,4 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [require("tailwindcss-animate"), nextui()],
 };
