@@ -24,6 +24,7 @@ export default function NewTodoPopover(setProjects) {
   });
 
   function handleSubmit() {
+    console.log("submitted");
     setProjects((currentProjects) => [...currentProjects, newTodo]);
   }
 
@@ -52,7 +53,7 @@ export default function NewTodoPopover(setProjects) {
               type="submit"
               className="flex min-w-min gap-1 bg-black text-white dark:bg-white dark:text-black "
               startContent={<Plus className="w-4" />}
-              // onClick={handleSubmit}
+              onPress={handleSubmit}
             >
               Add task
             </ButtonNext>

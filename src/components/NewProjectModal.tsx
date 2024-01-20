@@ -42,7 +42,15 @@ export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
                 />
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" onPress={() => handleSubmit(onClose)}>
+                <Button
+                  color="primary"
+                  onPress={() => {
+                    if (title === "") onClose();
+                    else {
+                      handleSubmit(onClose);
+                    }
+                  }}
+                >
                   Create
                 </Button>
               </ModalFooter>
