@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import NewTodoPopover from "./NewTodo/NewTodoPopover";
 
-export default function TodoList({ project, setProjects }) {
+export default function TodoList({ project, setProjects, activeProjectKey }) {
   const columns = [
     { key: "title", label: "Title" },
     { key: "dueDate", label: "Due Date" },
@@ -21,7 +21,10 @@ export default function TodoList({ project, setProjects }) {
       <div className="flex h-full flex-col gap-4 px-4 py-20 @4xl:px-16 @5xl:px-52">
         <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
 
-        <NewTodoPopover setProjects={setProjects} />
+        <NewTodoPopover
+          setProjects={setProjects}
+          activeProjectKey={activeProjectKey}
+        />
 
         <Table aria-label="Todo list" selectionMode="single">
           <TableHeader columns={columns}>
@@ -29,6 +32,7 @@ export default function TodoList({ project, setProjects }) {
               <TableColumn key={column.key}>{column.label}</TableColumn>
             )}
           </TableHeader>
+
           <TableBody
             items={project.todos}
             emptyContent={"All tasks completed!"}

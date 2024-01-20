@@ -7,7 +7,7 @@ export const exampleData = [
         title: "Watch youtube tutorials",
         description: "Some description",
         dueDate: "21/02/2024",
-        priority: "Low",
+        priority: "low",
         key: crypto.randomUUID(),
       },
       {

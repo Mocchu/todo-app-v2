@@ -18,9 +18,12 @@ import { Calendar } from "@/components/ui/calendar";
 import { useEffect, useState } from "react";
 
 export function DatePicker({ handleInputChange }) {
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = useState("");
 
-  useEffect(() => handleInputChange("dueDate", date), [date]);
+  useEffect(() => {
+    if (date === "") return;
+    handleInputChange("dueDate", format(date, "MM/dd/yyyy"));
+  }, [date]);
 
   return (
     <Popover>
@@ -42,6 +45,7 @@ export function DatePicker({ handleInputChange }) {
       >
         <Select
           onValueChange={(value) =>
+            // @ts-ignore
             setDate(addDays(new Date(), parseInt(value)))
           }
         >
@@ -56,6 +60,7 @@ export function DatePicker({ handleInputChange }) {
           </SelectContent>
         </Select>
         <div className="rounded-md border">
+          // @ts-ignore
           <Calendar mode="single" selected={date} onSelect={setDate} />
         </div>
       </PopoverContent>

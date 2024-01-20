@@ -14,7 +14,7 @@ import { Button as ButtonNext } from "@nextui-org/react";
 import { useState } from "react";
 import NewTodoForm from "./NewTodoForm";
 
-export default function NewTodoPopover(setProjects) {
+export default function NewTodoPopover({ setProjects, activeProjectKey }) {
   const [newTodo, setNewTodo] = useState(createEmptyTodo());
 
   function createEmptyTodo() {
@@ -28,12 +28,17 @@ export default function NewTodoPopover(setProjects) {
   }
 
   function handleSubmit() {
-    setNewTodo(createEmptyTodo);
-    console.log(newTodo);
+    if (newTodo.title === "") return;
 
     setProjects((currentProjects) => {
-      console.log("use key to find project and append new todo");
+      return currentProjects.map((project) => {
+        if (project.key === activeProjectKey) {
+          return { ...project, ["todos"]: [...project.todos, newTodo] };
+        }
+        return project;
+      });
     });
+    setNewTodo(createEmptyTodo);
   }
 
   return (

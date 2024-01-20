@@ -10,7 +10,6 @@ import { exampleData } from "./exampleData";
 
 export default function App() {
   const [projects, setProjects] = useState(exampleData);
-
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
   // const allTodos = projects.flatMap((project) => project.todos);
 
@@ -34,6 +33,7 @@ export default function App() {
               (project) => project.key === activeProjectKey,
             )}
             setProjects={setProjects}
+            activeProjectKey={activeProjectKey}
           />
         </ResizablePanel>
       </ResizablePanelGroup>
