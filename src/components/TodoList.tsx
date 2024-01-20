@@ -7,6 +7,7 @@ import {
   TableCell,
   getKeyValue,
 } from "@nextui-org/react";
+import NewTodoPopover from "./NewTodo/NewTodoPopover";
 
 export default function TodoList({ project }) {
   const columns = [
@@ -17,8 +18,11 @@ export default function TodoList({ project }) {
 
   return (
     <div className="@container">
-      <div className="@4xl:px-16 @5xl:px-52 h-full px-4 py-20">
-        <h1 className="mb-8 text-4xl font-bold">{project.title}</h1>
+      <div className="flex h-full flex-col gap-4 px-4 py-20 @4xl:px-16 @5xl:px-52">
+        <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
+
+        <NewTodoPopover />
+
         <Table aria-label="Todo list" selectionMode="single">
           <TableHeader columns={columns}>
             {(column) => (
