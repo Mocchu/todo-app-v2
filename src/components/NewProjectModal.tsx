@@ -7,14 +7,12 @@ import {
   Button,
   Input,
 } from "@nextui-org/react";
-import { useRef } from "react";
+import { useState } from "react";
 
 export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
-  const titleRef = useRef("");
+  const [title, setTitle] = useState("");
 
   function handleSubmit(onClose) {
-    // @ts-ignore
-    const title = titleRef.current.value;
     setProjects((currentProjects) => {
       return [
         ...currentProjects,
@@ -40,7 +38,7 @@ export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
                   placeholder="Enter project name"
                   variant="bordered"
                   // @ts-ignore
-                  ref={titleRef}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </ModalBody>
               <ModalFooter>

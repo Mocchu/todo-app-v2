@@ -10,11 +10,22 @@ import {
 } from "@/components/ui/sheet";
 import { Plus } from "lucide-react";
 import { Button } from "../ui/button";
+import { Button as ButtonNext } from "@nextui-org/react";
 import { useState } from "react";
 import NewTodoForm from "./NewTodoForm";
 
-export default function NewTodoPopover() {
-  const [date, setDate] = useState<Date>();
+export default function NewTodoPopover(setProjects) {
+  const [newTodo, setNewTodo] = useState({
+    title: "",
+    description: "",
+    dueDate: "",
+    priority: "Low",
+    key: crypto.randomUUID(),
+  });
+
+  function handleSubmit() {
+    setProjects((currentProjects) => [...currentProjects, newTodo]);
+  }
 
   return (
     <Sheet>
@@ -33,11 +44,18 @@ export default function NewTodoPopover() {
           </SheetDescription>
         </SheetHeader>
 
-        <NewTodoForm />
+        <NewTodoForm setNewTodo={setNewTodo} />
 
         <SheetFooter className="pt-4">
           <SheetClose asChild>
-            <Button type="submit">Add task</Button>
+            <ButtonNext
+              type="submit"
+              className="flex min-w-min gap-1 bg-black text-white dark:bg-white dark:text-black "
+              startContent={<Plus className="w-4" />}
+              // onClick={handleSubmit}
+            >
+              Add task
+            </ButtonNext>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

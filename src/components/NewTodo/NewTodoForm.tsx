@@ -1,10 +1,16 @@
-import { Input, Select, SelectItem } from "@nextui-org/react";
-import { AlertCircle } from "lucide-react";
+import { Input, Textarea } from "@nextui-org/react";
 import { DatePicker } from "./DatePicker";
+import PriorityPicker from "./PriorityPicker";
 
-export default function NewTodoForm() {
+export default function NewTodoForm({ setNewTodo }) {
+  function handleInputChange(name, value) {
+    setNewTodo((currentNewTodo) => {
+      return { ...currentNewTodo, [name]: value };
+    });
+  }
+
   return (
-    <form onClick={(e) => e.preventDefault()}>
+    <form onSubmit={(e) => e.preventDefault()}>
       <ul className="flex flex-col gap-4 pt-4">
         <li>
           <Input
@@ -13,45 +19,27 @@ export default function NewTodoForm() {
             size="sm"
             label="Task name"
             radius="lg"
+            onChange={(e) => handleInputChange(e.target.name, e.target.value)}
             autoFocus
             isRequired
           />
         </li>
+
         <li>
-          <Input
-            name="description"
-            variant="bordered"
-            size="sm"
+          <Textarea
+            variant={"bordered"}
             label="Description"
-            radius="lg"
+            className="col-span-12 mb-6 md:col-span-6 md:mb-0"
+            onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
         </li>
 
         <li>
-          <Select label="Priority" size="sm" variant="bordered" radius="lg">
-            <SelectItem
-              key="low"
-              startContent={<AlertCircle className="w-4 text-green-400" />}
-            >
-              Low
-            </SelectItem>
-            <SelectItem
-              key="med"
-              startContent={<AlertCircle className="w-4 text-yellow-400" />}
-            >
-              Medium
-            </SelectItem>
-            <SelectItem
-              key="high"
-              startContent={<AlertCircle className="w-4 text-red-400" />}
-            >
-              High
-            </SelectItem>
-          </Select>
+          <PriorityPicker handleInputChange={handleInputChange} />
         </li>
 
         <li>
-          <DatePicker></DatePicker>
+          <DatePicker handleInputChange={handleInputChange}></DatePicker>
         </li>
       </ul>
     </form>

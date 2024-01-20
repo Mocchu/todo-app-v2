@@ -46,6 +46,7 @@ export default function App() {
   ]);
 
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
+  // const allTodos = projects.flatMap((project) => project.todos);
 
   return (
     <div className="h-full">
@@ -66,6 +67,7 @@ export default function App() {
             project={projects.find(
               (project) => project.key === activeProjectKey,
             )}
+            setProjects={setProjects}
           />
         </ResizablePanel>
       </ResizablePanelGroup>

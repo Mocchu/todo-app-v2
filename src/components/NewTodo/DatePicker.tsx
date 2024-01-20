@@ -10,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import * as React from "react";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { addDays, format } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -18,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 
-export function DatePicker() {
+export function DatePicker({ handleInputChange }) {
   const [date, setDate] = useState<Date>();
 
   return (
@@ -28,7 +27,7 @@ export function DatePicker() {
           variant={"outline"}
           className={cn(
             "w-full justify-start border-2  text-left font-normal",
-            !date && "text-muted-foreground",
+            !date && "h-12 rounded-lg text-muted-foreground",
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
