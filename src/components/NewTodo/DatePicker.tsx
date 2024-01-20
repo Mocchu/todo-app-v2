@@ -15,10 +15,12 @@ import { addDays, format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function DatePicker({ handleInputChange }) {
   const [date, setDate] = useState<Date>();
+
+  useEffect(() => handleInputChange("dueDate", date), [date]);
 
   return (
     <Popover>

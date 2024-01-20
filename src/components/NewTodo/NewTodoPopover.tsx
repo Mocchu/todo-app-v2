@@ -15,17 +15,25 @@ import { useState } from "react";
 import NewTodoForm from "./NewTodoForm";
 
 export default function NewTodoPopover(setProjects) {
-  const [newTodo, setNewTodo] = useState({
-    title: "",
-    description: "",
-    dueDate: "",
-    priority: "Low",
-    key: crypto.randomUUID(),
-  });
+  const [newTodo, setNewTodo] = useState(createEmptyTodo());
+
+  function createEmptyTodo() {
+    return {
+      title: "",
+      description: "",
+      dueDate: "",
+      priority: "",
+      key: crypto.randomUUID(),
+    };
+  }
 
   function handleSubmit() {
-    console.log("submitted");
-    setProjects((currentProjects) => [...currentProjects, newTodo]);
+    setNewTodo(createEmptyTodo);
+    console.log(newTodo);
+
+    setProjects((currentProjects) => {
+      console.log("use key to find project and append new todo");
+    });
   }
 
   return (

@@ -11,7 +11,11 @@ import {
 
 export default function PriorityPicker({ handleInputChange }) {
   return (
-    <Select>
+    <Select
+      onValueChange={(value) =>
+        handleInputChange("priority", value.toLowerCase())
+      }
+    >
       <SelectTrigger className="h-12 border-2 text-gray-500 duration-200 ease-in-out dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white">
         <SelectValue placeholder="Pick a priority level" />
       </SelectTrigger>

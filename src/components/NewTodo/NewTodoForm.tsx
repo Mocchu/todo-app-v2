@@ -29,6 +29,7 @@ export default function NewTodoForm({ setNewTodo }) {
           <Textarea
             variant={"bordered"}
             label="Description"
+            name="description"
             className="col-span-12 mb-6 md:col-span-6 md:mb-0"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
