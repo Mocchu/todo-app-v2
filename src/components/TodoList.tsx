@@ -24,14 +24,14 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
     const cellValue = todo[columnKey];
 
     switch (columnKey) {
-      case "status": {
+      case "completed": {
         return (
           <div className="flex justify-start">
             <Checkbox
               color="default"
               size="sm"
               className="ml-[1px]"
-              value={cellValue}
+              isSelected={cellValue}
             />
           </div>
         );
@@ -80,7 +80,8 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
   }, []);
 
   const columns = [
-    { key: "status", label: "Status" },
+    { key: "completed", label: "Completed" },
+
     { key: "title", label: "Title" },
     { key: "dueDate", label: "Due date" },
     { key: "priority", label: "Priority" },
