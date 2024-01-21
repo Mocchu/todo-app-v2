@@ -22,6 +22,16 @@ export const exampleData = [
         overdue: false,
         key: crypto.randomUUID(),
       },
+      {
+        title: "Search stackoverflow",
+        description:
+          "Another long descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+        dueDate: "16/10/2025",
+        priority: "high",
+        completed: false,
+        overdue: false,
+        key: crypto.randomUUID(),
+      },
     ],
   },
   {

@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 import NewTodoPopover from "./NewTodo/NewTodoPopover";
 import { useCallback } from "react";
-import { DeleteIcon, EditIcon } from "lucide-react";
+import { DeleteIcon } from "lucide-react";
 
 export default function TodoList({ project, setProjects, activeProjectKey }) {
   const statusColorMap = {
@@ -63,18 +63,9 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
 
       case "actions":
         return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip content="Edit todo" closeDelay={100}>
-              <span className="cursor-pointer text-lg text-default-400 active:opacity-50">
-                <EditIcon className="w-4" />
-              </span>
-            </Tooltip>
-            <Tooltip color="danger" content="Delete todo" closeDelay={100}>
-              <span className="cursor-pointer text-lg text-danger active:opacity-50">
-                <DeleteIcon className="w-4" />
-              </span>
-            </Tooltip>
-          </div>
+          <Tooltip color="danger" content="Delete todo" closeDelay={100}>
+            <DeleteIcon className="ml-[13px] w-4 cursor-pointer text-lg text-danger active:opacity-50" />
+          </Tooltip>
         );
       default:
         return cellValue;
