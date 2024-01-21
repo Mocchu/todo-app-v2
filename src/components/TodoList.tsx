@@ -12,8 +12,9 @@ import NewTodoPopover from "./NewTodo/NewTodoPopover";
 export default function TodoList({ project, setProjects, activeProjectKey }) {
   const columns = [
     { key: "title", label: "Title" },
-    { key: "dueDate", label: "Due Date" },
+    { key: "dueDate", label: "Due date" },
     { key: "priority", label: "Priority" },
+    { key: "actions", label: "Actions" },
   ];
 
   return (
@@ -39,7 +40,7 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
           >
             {(item) => (
               // @ts-ignore comment
-              <TableRow key={item.key}>
+              <TableRow key={item.key} className="cursor-pointer">
                 {(columnKey) => (
                   <TableCell>{getKeyValue(item, columnKey)}</TableCell>
                 )}

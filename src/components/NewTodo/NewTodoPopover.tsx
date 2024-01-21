@@ -22,7 +22,7 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
       title: "",
       description: "",
       dueDate: "",
-      priority: "",
+      priority: "low",
       key: crypto.randomUUID(),
     };
   }
