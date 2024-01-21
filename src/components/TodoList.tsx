@@ -40,7 +40,9 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
       case "title":
         return (
           <div className="flex max-h-10 max-w-44 flex-col">
-            <p className="text-bold text-sm">{cellValue}</p>
+            <p className="text-bold truncate text-nowrap break-all text-sm">
+              {cellValue}
+            </p>
             <p className="text-boldtext-sm truncate text-nowrap break-all text-default-400">
               {todo.description}
             </p>
@@ -80,8 +82,7 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
   }, []);
 
   const columns = [
-    { key: "completed", label: "Completed" },
-
+    { key: "completed", label: "Status" },
     { key: "title", label: "Title" },
     { key: "dueDate", label: "Due date" },
     { key: "priority", label: "Priority" },
