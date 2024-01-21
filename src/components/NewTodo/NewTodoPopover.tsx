@@ -23,6 +23,8 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
       description: "",
       dueDate: "",
       priority: "low",
+      completed: false,
+      overdue: false,
       key: crypto.randomUUID(),
     };
   }
