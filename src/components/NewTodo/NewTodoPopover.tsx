@@ -40,11 +40,10 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
         return project;
       });
     });
-    setNewTodo(createEmptyTodo);
   }
 
   return (
-    <Sheet>
+    <Sheet onOpenChange={() => setNewTodo(createEmptyTodo)}>
       <SheetTrigger asChild className="w-min">
         <Button className="flex min-w-min gap-1">
           <Plus className="w-4" />
