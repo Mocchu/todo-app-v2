@@ -99,7 +99,13 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
           activeProjectKey={activeProjectKey}
         />
 
-        <Table aria-label="Todo list" selectionMode="single">
+        <Table
+          aria-label="Todo list"
+          selectionMode="single"
+          disabledKeys={project.todos.map((todo) => {
+            if (todo.completed) return todo.key;
+          })}
+        >
           <TableHeader columns={columns}>
             {(column) => (
               <TableColumn key={column.key}>{column.label}</TableColumn>
@@ -112,7 +118,14 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
           >
             {(todo) => (
               // @ts-ignore comment
-              <TableRow key={todo.key} className="cursor-pointer">
+              <TableRow
+                // @ts-ignore comment
+                key={todo.key}
+                className={
+                  // @ts-ignore comment
+                  "cursor-pointer " + (todo.completed ? "line-through" : "")
+                }
+              >
                 {(columnKey) => (
                   <TableCell>{renderCell(todo, columnKey)}</TableCell>
                 )}
