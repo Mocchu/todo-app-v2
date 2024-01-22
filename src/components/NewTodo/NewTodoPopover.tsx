@@ -22,7 +22,7 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
       title: "",
       description: "",
       dueDate: "",
-      priority: "low",
+      priority: "Low",
       completed: false,
       overdue: false,
       key: crypto.randomUUID(),
@@ -35,7 +35,7 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
     setProjects((currentProjects) => {
       return currentProjects.map((project) => {
         if (project.key === activeProjectKey) {
-          return { ...project, ["todos"]: [...project.todos, newTodo] };
+          return { ...project, todos: [...project.todos, newTodo] };
         }
         return project;
       });

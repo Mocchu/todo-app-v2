@@ -6,19 +6,41 @@ import {
   TableRow,
   TableCell,
   Chip,
-  Tooltip,
   Checkbox,
+  Tooltip,
 } from "@nextui-org/react";
 import NewTodoPopover from "./NewTodo/NewTodoPopover";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { DeleteIcon } from "lucide-react";
+import EditTodoPopover from "./EditTodo/EditTodoPopover";
 
-export default function TodoList({ project, setProjects, activeProjectKey }) {
+export default function TodoList({
+  project,
+  setProjects,
+  activeProjectKey,
+  projects,
+}) {
+  const [selectedTodoKey, setselectedTodoKey] = useState("");
+  const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
+
   const statusColorMap = {
-    low: "success",
-    med: "warning",
-    high: "danger",
+    Low: "success",
+    Med: "warning",
+    High: "danger",
   };
+
+  const columns = [
+    { key: "completed", label: "Status" },
+    { key: "title", label: "Title" },
+    { key: "dueDate", label: "Due date" },
+    { key: "priority", label: "Priority" },
+    { key: "actions", label: "Actions" },
+  ];
+
+  function handleRowClick(key) {
+    setselectedTodoKey(key);
+    setOpenEditTodoSheet(true);
+  }
 
   const renderCell = useCallback((todo, columnKey) => {
     const cellValue = todo[columnKey];
@@ -51,34 +73,23 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
 
       case "priority":
         return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[todo.priority]}
-            size="sm"
-            variant="flat"
-          >
+          <Chip color={statusColorMap[todo.priority]} size="sm" variant="flat">
             {cellValue}
           </Chip>
         );
 
       case "actions":
         return (
-          <Tooltip color="danger" content="Delete todo" closeDelay={100}>
-            <DeleteIcon className="ml-[13px] w-4 cursor-pointer text-lg text-danger active:opacity-50" />
+          <Tooltip color="danger" content="Delete user" closeDelay={100}>
+            <span className="w-4 cursor-pointer text-lg text-danger active:opacity-50">
+              <DeleteIcon className="ml-3 w-4" />
+            </span>
           </Tooltip>
         );
       default:
         return cellValue;
     }
   }, []);
-
-  const columns = [
-    { key: "completed", label: "Status" },
-    { key: "title", label: "Title" },
-    { key: "dueDate", label: "Due date" },
-    { key: "priority", label: "Priority" },
-    { key: "actions", label: "Actions" },
-  ];
 
   return (
     <div className="@container">
@@ -116,6 +127,8 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
                   // @ts-ignore comment
                   "cursor-pointer " + (todo.completed ? "line-through" : "")
                 }
+                // @ts-ignore comment
+                onClick={(e) => handleRowClick(todo.key)}
               >
                 {(columnKey) => (
                   <TableCell>{renderCell(todo, columnKey)}</TableCell>
@@ -124,6 +137,15 @@ export default function TodoList({ project, setProjects, activeProjectKey }) {
             )}
           </TableBody>
         </Table>
+
+        <EditTodoPopover
+          setProjects={setProjects}
+          activeProjectKey={activeProjectKey}
+          selectedTodoKey={selectedTodoKey}
+          openNewTodoSheet={openNewTodoSheet}
+          setOpenEditTodoSheet={setOpenEditTodoSheet}
+          projects={projects}
+        />
       </div>
     </div>
   );

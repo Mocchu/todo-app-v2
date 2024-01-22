@@ -1,8 +1,8 @@
 import { Input, Textarea } from "@nextui-org/react";
-import { DatePicker } from "./DatePicker";
-import PriorityPicker from "../ui/PriorityPicker";
+import { EditDatePicker } from "./EditDatePicker";
+import EditPriorityPicker from "./EditPriorityPicker";
 
-export default function NewTodoForm({ setNewTodo }) {
+export default function EditTodoForm({ setNewTodo, selectedTodo }) {
   function handleInputChange(name, value) {
     setNewTodo((currentNewTodo) => {
       return { ...currentNewTodo, [name]: value };
@@ -20,6 +20,7 @@ export default function NewTodoForm({ setNewTodo }) {
             label="Task name"
             radius="lg"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+            defaultValue={selectedTodo.title}
             autoFocus
             isRequired
           />
@@ -32,15 +33,22 @@ export default function NewTodoForm({ setNewTodo }) {
             name="description"
             className="col-span-12 mb-6 md:col-span-6 md:mb-0"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+            defaultValue={selectedTodo.description}
           />
         </li>
 
         <li>
-          <PriorityPicker handleInputChange={handleInputChange} />
+          <EditPriorityPicker
+            handleInputChange={handleInputChange}
+            selectedTodo={selectedTodo}
+          />
         </li>
 
         <li>
-          <DatePicker handleInputChange={handleInputChange}></DatePicker>
+          <EditDatePicker
+            handleInputChange={handleInputChange}
+            selectedTodo={selectedTodo}
+          ></EditDatePicker>
         </li>
       </ul>
     </form>

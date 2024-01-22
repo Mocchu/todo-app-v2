@@ -34,6 +34,7 @@ export default function App() {
             )}
             setProjects={setProjects}
             activeProjectKey={activeProjectKey}
+            projects={projects}
           />
         </ResizablePanel>
       </ResizablePanelGroup>
