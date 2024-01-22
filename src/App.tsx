@@ -13,6 +13,8 @@ export default function App() {
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
   // const allTodos = projects.flatMap((project) => project.todos);
 
+  // console.log(projects[0].todos[0].title);
+
   return (
     <div className="h-full">
       <ResizablePanelGroup direction="horizontal">
