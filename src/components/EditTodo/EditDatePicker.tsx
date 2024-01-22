@@ -37,11 +37,11 @@ export function EditDatePicker({ handleInputChange, selectedTodo }) {
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild className="h-12">
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start border-2  text-left font-normal",
+            "w-full justify-start border-2 text-left font-normal",
             !date && "h-12 rounded-lg text-muted-foreground",
           )}
         >
