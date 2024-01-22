@@ -24,6 +24,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["src", "public/exampleData.tsx"],
+  "include": ["src", "src/assets/exampleData.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }

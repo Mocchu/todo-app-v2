@@ -36,7 +36,6 @@ export default function EditTodoPopover({
     // Find the todo in state and return a new projects array with the edited todo
     setProjects((currentProjects) => {
       return currentProjects.map((project) => {
-        console.log(`project: ${project}`);
         if (project.key === activeProjectKey) {
           return {
             ...project,

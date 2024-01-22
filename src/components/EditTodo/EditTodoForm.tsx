@@ -8,6 +8,7 @@ export default function EditTodoForm({ setNewTodo, selectedTodo }) {
       return { ...currentNewTodo, [name]: value };
     });
   }
+  if (!selectedTodo) return;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>

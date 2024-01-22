@@ -12,11 +12,11 @@ export default function EditPriorityPicker({
   handleInputChange,
   selectedTodo,
 }) {
+  if (!selectedTodo) return;
+
   return (
     <Select
-      onValueChange={(value) =>
-        handleInputChange("priority", value.toLowerCase())
-      }
+      onValueChange={(value) => handleInputChange("priority", value)}
       defaultValue={selectedTodo.priority}
     >
       <SelectTrigger className="h-12 border-2 text-zinc-500 duration-200 ease-in-out dark:text-white dark:hover:bg-zinc-800">

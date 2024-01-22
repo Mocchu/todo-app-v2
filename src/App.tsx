@@ -6,7 +6,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { exampleData } from "../public/exampleData";
+import { exampleData } from "./assets/exampleData";
 
 export default function App() {
   const [projects, setProjects] = useState(exampleData);

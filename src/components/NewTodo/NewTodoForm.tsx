@@ -1,6 +1,6 @@
 import { Input, Textarea } from "@nextui-org/react";
 import { DatePicker } from "./DatePicker";
-import PriorityPicker from "../ui/PriorityPicker";
+import PriorityPicker from "./PriorityPicker";
 
 export default function NewTodoForm({ setNewTodo }) {
   function handleInputChange(name, value) {
