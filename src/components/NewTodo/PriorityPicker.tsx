@@ -10,11 +10,7 @@ import { AlertCircle } from "lucide-react";
 
 export default function PriorityPicker({ handleInputChange }) {
   return (
-    <Select
-      onValueChange={(value) =>
-        handleInputChange("priority", value.toLowerCase())
-      }
-    >
+    <Select onValueChange={(value) => handleInputChange("priority", value)}>
       <SelectTrigger className="h-12 border-2 text-black duration-200 ease-in-out dark:text-white dark:hover:bg-zinc-800">
         <div className="flex items-center gap-2">
           <AlertCircle className="ml-1 mt-[2px] w-4" />
