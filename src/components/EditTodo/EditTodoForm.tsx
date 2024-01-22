@@ -9,8 +9,6 @@ export default function EditTodoForm({ setNewTodo, selectedTodo }) {
     });
   }
 
-  if (!selectedTodo) return;
-
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <ul className="flex flex-col gap-4 pt-4">

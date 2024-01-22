@@ -20,15 +20,24 @@ export default function PriorityPicker({ handleInputChange }) {
 
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="Low" className="duration-300 ease-in-out">
+          <SelectItem
+            value="Low"
+            className="cursor-pointer duration-300 ease-in-out"
+          >
             Low
           </SelectItem>
 
-          <SelectItem value="Med" className="duration-300 ease-in-out">
+          <SelectItem
+            value="Med"
+            className="text cursor-pointer duration-300 ease-in-out"
+          >
             Medium
           </SelectItem>
 
-          <SelectItem value="High" className="duration-300 ease-in-out">
+          <SelectItem
+            value="High"
+            className="text cursor-pointer duration-300 ease-in-out"
+          >
             High
           </SelectItem>
         </SelectGroup>
