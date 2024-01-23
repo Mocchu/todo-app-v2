@@ -33,8 +33,8 @@ export function DatePicker({ handleInputChange }) {
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start border-2  text-left font-normal",
-            !date && "h-12 rounded-lg text-muted-foreground",
+            "h-12 w-full justify-start border-2 text-left font-normal",
+            !date && "rounded-lg text-muted-foreground",
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
