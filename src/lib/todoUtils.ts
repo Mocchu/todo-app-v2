@@ -10,7 +10,7 @@ export function createEmptyTodo() {
   };
 }
 
-export function convertDateObject(dateObject) {
+export function convertToDateObject(dateObject) {
   if (!dateObject) return "";
 
   const [day, month, year] = dateObject.split("/").map(Number);

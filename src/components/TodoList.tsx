@@ -97,6 +97,11 @@ export default function TodoList({
           </Chip>
         );
 
+      case "dueDate":
+        return (
+          <p className={todo.overdue ? "text-red-400" : ""}>{cellValue}</p>
+        );
+
       default:
         return cellValue;
     }

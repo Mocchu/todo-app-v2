@@ -26,7 +26,7 @@ export const exampleData = [
         title: "Search stackoverflow",
         description:
           "Another long descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
-        dueDate: "16/10/2025",
+        dueDate: "01/01/2023",
         priority: "High",
         completed: false,
         overdue: false,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import TodoList from "./components/TodoList";
 import {
@@ -7,21 +7,33 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { exampleData } from "./assets/exampleData";
+import { convertToDateObject } from "./lib/todoUtils";
+import { isBefore } from "date-fns";
 
 export default function App() {
   const [projects, setProjects] = useState(exampleData);
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
+
+  useEffect(setOverdue, [projects]);
   // const allTodos = projects.flatMap((project) => project.todos);
 
   function setOverdue() {
-    setProjects((project) => {
-      return {
-        // @ts-ignore
-        ...project, todos: project.todos.map(todo => {
-          if (todo.dueDate)
-        })
-      }
-    })
+    setProjects((currentProjects) => {
+      return currentProjects.map((project) => {
+        return {
+          ...project,
+          todos: project.todos.map((todo) => {
+            if (
+              isBefore(convertToDateObject(todo.dueDate), new Date()) &&
+              !todo.completed
+            ) {
+              return { ...todo, overdue: true };
+            }
+            return todo;
+          }),
+        };
+      });
+    });
   }
 
   return (
