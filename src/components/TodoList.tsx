@@ -23,11 +23,26 @@ export default function TodoList({
   const [selectedTodoKey, setselectedTodoKey] = useState("");
   const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
 
-  const statusColorMap = {
-    Low: "success",
-    Med: "warning",
-    High: "danger",
-  };
+  function handleRowClick(key) {
+    setselectedTodoKey(key);
+    setOpenEditTodoSheet(true);
+  }
+
+  function handleCheckboxClick(todoKey) {
+    setProjects((currentProjects) => {
+      return currentProjects.map((project) => {
+        if (project.key !== activeProjectKey) return project;
+
+        return {
+          ...project,
+          todos: project.todos.map((todo) => {
+            if (todo.key !== todoKey) return todo;
+            return { ...todo, completed: !todo.completed };
+          }),
+        };
+      });
+    });
+  }
 
   const columns = [
     { key: "completed", label: "Status" },
@@ -37,13 +52,14 @@ export default function TodoList({
     { key: "actions", label: "Actions" },
   ];
 
-  function handleRowClick(key) {
-    setselectedTodoKey(key);
-    setOpenEditTodoSheet(true);
-  }
-
   const renderCell = useCallback((todo, columnKey) => {
     const cellValue = todo[columnKey];
+
+    const statusColorMap = {
+      Low: "success",
+      Med: "warning",
+      High: "danger",
+    };
 
     switch (columnKey) {
       case "completed": {
@@ -53,7 +69,8 @@ export default function TodoList({
               color="default"
               size="sm"
               className="ml-[1px]"
-              isSelected={cellValue}
+              defaultSelected={cellValue}
+              onClick={() => handleCheckboxClick(todo.key)}
             />
           </div>
         );
