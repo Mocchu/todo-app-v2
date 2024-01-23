@@ -25,7 +25,6 @@ export default function App() {
     if (storageAvailable("localStorage")) {
       const storedProjects = JSON.parse(localStorage.getItem("projects"));
       if (storedProjects) {
-        console.log("getting local storage");
         setProjects(storedProjects);
       }
     }
@@ -33,7 +32,6 @@ export default function App() {
 
   function setLocalStorage() {
     if (storageAvailable("localStorage")) {
-      console.log("write to local storage");
       localStorage.setItem("projects", JSON.stringify(projects));
     }
   }
