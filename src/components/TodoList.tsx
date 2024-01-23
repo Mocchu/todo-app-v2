@@ -152,7 +152,9 @@ export default function TodoList({
                 key={todo.key}
                 className={
                   // @ts-ignore comment
-                  "cursor-pointer " + (todo.completed ? "line-through" : "")
+                  "cursor-pointer " +
+                  // @ts-ignore comment
+                  (todo.completed ? "line-through decoration-neutral-500" : "")
                 }
                 // @ts-ignore comment
                 onClick={(e) => handleRowClick(todo.key)}
