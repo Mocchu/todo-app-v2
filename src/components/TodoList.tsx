@@ -49,7 +49,6 @@ export default function TodoList({
     { key: "title", label: "Title" },
     { key: "dueDate", label: "Due date" },
     { key: "priority", label: "Priority" },
-    { key: "actions", label: "Actions" },
   ];
 
   const renderCell = useCallback((todo, columnKey) => {
@@ -100,19 +99,6 @@ export default function TodoList({
           </Chip>
         );
 
-      case "actions":
-        return (
-          <Tooltip color="danger" content="Delete user" closeDelay={100}>
-            <span
-              className={
-                "h-4 w-4 cursor-pointer text-lg text-danger active:opacity-50" +
-                (todo.completed ? " opacity-50" : "")
-              }
-            >
-              <Delete className="ml-3 w-4" />
-            </span>
-          </Tooltip>
-        );
       default:
         return cellValue;
     }

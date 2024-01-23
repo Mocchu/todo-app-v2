@@ -23,10 +23,9 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
 
     setProjects((currentProjects) => {
       return currentProjects.map((project) => {
-        if (project.key === activeProjectKey) {
-          return { ...project, todos: [...project.todos, newTodo] };
-        }
-        return project;
+        if (project.key !== activeProjectKey) return project;
+
+        return { ...project, todos: [...project.todos, newTodo] };
       });
     });
   }

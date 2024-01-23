@@ -7,11 +7,12 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Edit } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
 import { Button as ButtonNext } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import EditTodoForm from "./EditTodoForm";
 import { createEmptyTodo } from "@/lib/todoUtils";
+import { set } from "date-fns";
 
 export default function EditTodoPopover({
   setProjects,
@@ -29,22 +30,38 @@ export default function EditTodoPopover({
   }, [selectedTodoKey, projects]);
 
   function handleSubmit() {
+    setOpenEditTodoSheet(false);
+
     // @ts-ignore
     if (newTodo.title === "") return;
 
     // Find the todo in state and return a new projects array with the edited todo
     setProjects((currentProjects) => {
       return currentProjects.map((project) => {
-        if (project.key === activeProjectKey) {
-          console.log("key matched!");
-          return {
-            ...project,
-            todos: project.todos.map((todo) => {
-              return todo.key === selectedTodoKey ? newTodo : todo;
-            }),
-          };
-        }
-        return project;
+        if (project.key !== activeProjectKey) return project;
+
+        return {
+          ...project,
+          todos: project.todos.map((todo) => {
+            return todo.key === selectedTodoKey ? newTodo : todo;
+          }),
+        };
+      });
+    });
+    setNewTodo(createEmptyTodo());
+  }
+
+  function handleDelete() {
+    setProjects((currentProjects) => {
+      return currentProjects.map((project) => {
+        if (project.key !== activeProjectKey) return project;
+
+        return {
+          ...project,
+          todos: project.todos.map((todo) => {
+            return todo.key === selectedTodoKey ? newTodo : todo;
+          }),
+        };
       });
     });
     setNewTodo(createEmptyTodo());
@@ -76,16 +93,22 @@ export default function EditTodoPopover({
         />
 
         <SheetFooter className="pt-4">
-          <SheetClose asChild>
+          <SheetClose asChild className="flex gap-4">
             <ButtonNext
-              type="submit"
-              className="flex min-w-min gap-2 bg-black text-white dark:bg-white dark:text-black "
-              startContent={<Edit className="w-4 pt-[3px]" />}
-              onPress={handleSubmit}
-            >
-              Edit task
-            </ButtonNext>
+              className="flex min-w-min gap-2 bg-danger text-white dark:text-white "
+              startContent={<Trash className="w-4 pt-[3px]" />}
+              onPress={handleDelete}
+              isIconOnly
+            ></ButtonNext>
           </SheetClose>
+          <ButtonNext
+            type="submit"
+            className="flex min-w-min gap-2 bg-black text-white dark:bg-white dark:text-black "
+            startContent={<Edit className="w-4 pt-[3px]" />}
+            onPress={handleSubmit}
+          >
+            Edit Task
+          </ButtonNext>
         </SheetFooter>
       </SheetContent>
     </Sheet>
