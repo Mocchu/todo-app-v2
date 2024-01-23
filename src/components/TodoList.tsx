@@ -90,7 +90,12 @@ export default function TodoList({
 
       case "priority":
         return (
-          <Chip color={statusColorMap[todo.priority]} size="sm" variant="flat">
+          <Chip
+            color={statusColorMap[todo.priority]}
+            size="sm"
+            variant="flat"
+            className={todo.completed ? "line-through opacity-50" : ""}
+          >
             {cellValue}
           </Chip>
         );
@@ -98,7 +103,12 @@ export default function TodoList({
       case "actions":
         return (
           <Tooltip color="danger" content="Delete user" closeDelay={100}>
-            <span className="w-4 cursor-pointer text-lg text-danger active:opacity-50">
+            <span
+              className={
+                "fixed h-4 w-4 cursor-pointer text-lg text-danger active:opacity-50" +
+                (todo.completed ? " opacity-50" : "")
+              }
+            >
               <DeleteIcon className="ml-3 w-4" />
             </span>
           </Tooltip>
