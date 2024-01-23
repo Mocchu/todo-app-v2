@@ -20,15 +20,7 @@ export default function EditTodoPopover({
   setOpenEditTodoSheet,
   projects,
 }) {
-  const [newTodo, setNewTodo] = useState({
-    title: "",
-    description: "",
-    dueDate: "",
-    priority: "Low",
-    completed: false,
-    overdue: false,
-    key: crypto.randomUUID(),
-  });
+  const [newTodo, setNewTodo] = useState(createEmptyTodo());
 
   function handleSubmit() {
     if (newTodo.title === "") return;
@@ -47,6 +39,19 @@ export default function EditTodoPopover({
         return project;
       });
     });
+    setNewTodo(createEmptyTodo());
+  }
+
+  function createEmptyTodo() {
+    return {
+      title: "",
+      description: "",
+      dueDate: "",
+      priority: "Low",
+      completed: false,
+      overdue: false,
+      key: crypto.randomUUID(),
+    };
   }
 
   const selectedTodo = (function findSelectedTodo() {
