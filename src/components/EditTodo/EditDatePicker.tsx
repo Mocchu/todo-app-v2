@@ -27,7 +27,7 @@ export function EditDatePicker({ handleInputChange, selectedTodo }) {
   useEffect(() => {
     // @ts-ignore
     if (date === "") return;
-    handleInputChange("dueDate", format(date, "MM/dd/yyyy"));
+    handleInputChange("dueDate", format(date, "dd/MM/yyyy"));
   }, [date]);
 
   return (
