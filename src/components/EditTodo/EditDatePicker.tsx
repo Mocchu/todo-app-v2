@@ -16,15 +16,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { useEffect, useState } from "react";
+import { convertDateObject } from "@/lib/todoUtils";
 
 export function EditDatePicker({ handleInputChange, selectedTodo }) {
-  const dateObject = (function dateObject() {
-    const dueDate = selectedTodo.dueDate;
-    if (!dueDate) return "";
-
-    const [day, month, year] = dueDate.split("/").map(Number);
-    return new Date(year, month - 1, day);
-  })();
+  const dateObject = convertDateObject(selectedTodo.dueDate);
 
   // @ts-ignore
   const [date, setDate] = useState<Date>(dateObject || "");

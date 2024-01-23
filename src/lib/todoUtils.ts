@@ -9,3 +9,10 @@ export function createEmptyTodo() {
     key: crypto.randomUUID(),
   };
 }
+
+export function convertDateObject(dateObject) {
+  if (!dateObject) return "";
+
+  const [day, month, year] = dateObject.split("/").map(Number);
+  return new Date(year, month - 1, day);
+}

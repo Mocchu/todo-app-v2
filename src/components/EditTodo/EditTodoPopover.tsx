@@ -12,7 +12,6 @@ import { Button as ButtonNext } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import EditTodoForm from "./EditTodoForm";
 import { createEmptyTodo } from "@/lib/todoUtils";
-import { set } from "date-fns";
 
 export default function EditTodoPopover({
   setProjects,

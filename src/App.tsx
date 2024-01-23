@@ -13,6 +13,17 @@ export default function App() {
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
   // const allTodos = projects.flatMap((project) => project.todos);
 
+  function setOverdue() {
+    setProjects((project) => {
+      return {
+        // @ts-ignore
+        ...project, todos: project.todos.map(todo => {
+          if (todo.dueDate)
+        })
+      }
+    })
+  }
+
   return (
     <div className="h-full">
       <ResizablePanelGroup direction="horizontal">

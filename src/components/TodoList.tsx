@@ -7,11 +7,9 @@ import {
   TableCell,
   Chip,
   Checkbox,
-  Tooltip,
 } from "@nextui-org/react";
 import NewTodoPopover from "./NewTodo/NewTodoPopover";
 import { useCallback, useState } from "react";
-import { Delete } from "lucide-react";
 import EditTodoPopover from "./EditTodo/EditTodoPopover";
 
 export default function TodoList({
