@@ -58,9 +58,7 @@ export default function EditTodoPopover({
 
         return {
           ...project,
-          todos: project.todos.map((todo) => {
-            return todo.key === selectedTodoKey ? newTodo : todo;
-          }),
+          todos: project.todos.filter((todo) => todo.key !== selectedTodoKey),
         };
       });
     });
