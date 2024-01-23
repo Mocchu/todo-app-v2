@@ -13,21 +13,10 @@ import { Button } from "../ui/button";
 import { Button as ButtonNext } from "@nextui-org/react";
 import { useState } from "react";
 import NewTodoForm from "./NewTodoForm";
+import { createEmptyTodo } from "@/lib/todoUtils";
 
 export default function NewTodoPopover({ setProjects, activeProjectKey }) {
   const [newTodo, setNewTodo] = useState(createEmptyTodo());
-
-  function createEmptyTodo() {
-    return {
-      title: "",
-      description: "",
-      dueDate: "",
-      priority: "Low",
-      completed: false,
-      overdue: false,
-      key: crypto.randomUUID(),
-    };
-  }
 
   function handleSubmit() {
     if (newTodo.title === "") return;

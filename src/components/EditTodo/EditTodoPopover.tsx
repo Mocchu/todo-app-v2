@@ -11,6 +11,7 @@ import { Edit } from "lucide-react";
 import { Button as ButtonNext } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import EditTodoForm from "./EditTodoForm";
+import { createEmptyTodo } from "@/lib/todoUtils";
 
 export default function EditTodoPopover({
   setProjects,
@@ -22,6 +23,7 @@ export default function EditTodoPopover({
 }) {
   const [newTodo, setNewTodo] = useState({});
 
+  // This is probably a terrible way of setting initial state
   useEffect(() => {
     setNewTodo(findSelectedTodo());
   }, [selectedTodoKey, projects]);
@@ -46,18 +48,6 @@ export default function EditTodoPopover({
       });
     });
     setNewTodo(createEmptyTodo());
-  }
-
-  function createEmptyTodo() {
-    return {
-      title: "",
-      description: "",
-      dueDate: "",
-      priority: "Low",
-      completed: false,
-      overdue: false,
-      key: crypto.randomUUID(),
-    };
   }
 
   function findSelectedTodo() {
