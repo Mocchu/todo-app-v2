@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 import NewTodoPopover from "./NewTodo/NewTodoPopover";
 import { useCallback, useState } from "react";
-import { DeleteIcon } from "lucide-react";
+import { Delete } from "lucide-react";
 import EditTodoPopover from "./EditTodo/EditTodoPopover";
 
 export default function TodoList({
@@ -82,7 +82,7 @@ export default function TodoList({
             <p className="text-bold truncate text-nowrap break-all text-sm">
               {cellValue}
             </p>
-            <p className="text-boldtext-sm truncate text-nowrap break-all text-default-400">
+            <p className="text-boldtext-sm truncate text-nowrap break-all text-xs text-default-400">
               {todo.description}
             </p>
           </div>
@@ -105,11 +105,11 @@ export default function TodoList({
           <Tooltip color="danger" content="Delete user" closeDelay={100}>
             <span
               className={
-                "fixed h-4 w-4 cursor-pointer text-lg text-danger active:opacity-50" +
+                "h-4 w-4 cursor-pointer text-lg text-danger active:opacity-50" +
                 (todo.completed ? " opacity-50" : "")
               }
             >
-              <DeleteIcon className="ml-3 w-4" />
+              <Delete className="ml-3 w-4" />
             </span>
           </Tooltip>
         );
