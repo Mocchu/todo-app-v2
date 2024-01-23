@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import TodoList from "./components/TodoList";
 import {
@@ -7,12 +7,36 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { exampleData } from "./assets/exampleData";
+import { storageAvailable } from "./lib/todoUtils";
 // import { convertToDateObject } from "./lib/todoUtils";
 // import { isBefore } from "date-fns";
 
 export default function App() {
-  const [projects, setProjects] = useState(exampleData);
+  const [projects, setProjects] = useState(() => {
+    return JSON.parse(localStorage.getItem("projects")) || exampleData;
+  });
+
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
+
+  useEffect(getLocalStorage, []);
+  useEffect(setLocalStorage, [projects]);
+
+  function getLocalStorage() {
+    if (storageAvailable("localStorage")) {
+      const storedProjects = JSON.parse(localStorage.getItem("projects"));
+      if (storedProjects) {
+        console.log("getting local storage");
+        setProjects(storedProjects);
+      }
+    }
+  }
+
+  function setLocalStorage() {
+    if (storageAvailable("localStorage")) {
+      console.log("write to local storage");
+      localStorage.setItem("projects", JSON.stringify(projects));
+    }
+  }
 
   // This breaks editing
   // useEffect(setOverdue, [projects]);
@@ -53,6 +77,7 @@ export default function App() {
 
         <ResizablePanel>
           <TodoList
+            // @ts-ignore
             project={projects.find(
               (project) => project.key === activeProjectKey,
             )}
