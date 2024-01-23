@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sheet";
 import { Edit } from "lucide-react";
 import { Button as ButtonNext } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditTodoForm from "./EditTodoForm";
 
 export default function EditTodoPopover({
@@ -20,15 +20,21 @@ export default function EditTodoPopover({
   setOpenEditTodoSheet,
   projects,
 }) {
-  const [newTodo, setNewTodo] = useState(createEmptyTodo());
+  const [newTodo, setNewTodo] = useState({});
+
+  useEffect(() => {
+    setNewTodo(findSelectedTodo());
+  }, [selectedTodoKey, projects]);
 
   function handleSubmit() {
+    // @ts-ignore
     if (newTodo.title === "") return;
 
     // Find the todo in state and return a new projects array with the edited todo
     setProjects((currentProjects) => {
       return currentProjects.map((project) => {
         if (project.key === activeProjectKey) {
+          console.log("key matched!");
           return {
             ...project,
             todos: project.todos.map((todo) => {
@@ -54,7 +60,7 @@ export default function EditTodoPopover({
     };
   }
 
-  const selectedTodo = (function findSelectedTodo() {
+  function findSelectedTodo() {
     const activeProject = projects.find((project) => {
       return project.key === activeProjectKey;
     });
@@ -62,7 +68,7 @@ export default function EditTodoPopover({
     return activeProject.todos.find((todo) => {
       return todo.key === selectedTodoKey;
     });
-  })();
+  }
 
   return (
     <Sheet open={openNewTodoSheet} onOpenChange={setOpenEditTodoSheet}>
@@ -74,7 +80,10 @@ export default function EditTodoPopover({
           </SheetDescription>
         </SheetHeader>
 
-        <EditTodoForm setNewTodo={setNewTodo} selectedTodo={selectedTodo} />
+        <EditTodoForm
+          setNewTodo={setNewTodo}
+          selectedTodo={findSelectedTodo()}
+        />
 
         <SheetFooter className="pt-4">
           <SheetClose asChild>
