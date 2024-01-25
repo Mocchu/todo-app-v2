@@ -15,11 +15,25 @@ export default function App() {
   });
 
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
-  // const allTodos = projects.flatMap((project) => project.todos);
 
   useEffect(() => getLocalStorage(setProjects), []);
   useEffect(() => setLocalStorage(projects), [projects]);
   useEffect(() => setOverdue(setProjects), [projects]);
+
+  // useEffect(() => {
+  //   setProjects((currentProjects) => {
+  //     const newAllTodo = currentProjects.map((project) => {
+  //       if (project.key === "allTodos")
+  //         return {
+  //           ...project,
+  //           todos: projects.flatMap((project) => project.todos),
+  //         };
+  //       return project;
+  //     });
+  //     if (JSON.stringify(newAllTodo) !== JSON.stringify(projects))
+  //       return newAllTodo;
+  //   });
+  // }, [projects]);
 
   return (
     <ResizablePanelGroup direction="horizontal" className="fadeInUp-animation">

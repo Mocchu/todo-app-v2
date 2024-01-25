@@ -9,6 +9,7 @@ import { ModeToggle } from "./mode-toggle";
 import { Divider, User, Button, Link, useDisclosure } from "@nextui-org/react";
 import { Button as ButtonShad } from "@/components/ui/button";
 import NewProjectModal from "./NewProjectModal";
+import pfp from "../../public/pfp.jpg";
 
 export default function Sidebar({
   projects,
@@ -33,7 +34,7 @@ export default function Sidebar({
             github@Mocchu
           </Link>
         }
-        avatarProps={{ src: "../public/pfp.jpg" }}
+        avatarProps={{ src: pfp }}
         className="mb-4"
       />
 
