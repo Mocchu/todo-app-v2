@@ -98,7 +98,14 @@ export default function TodoList({
 
       case "dueDate":
         return (
-          <p className={todo.overdue ? "text-red-400" : ""}>{cellValue}</p>
+          <p
+            className={
+              (todo.overdue ? "text-red-400" : "") +
+              (todo.completed ? " opacity-50" : "")
+            }
+          >
+            {cellValue}
+          </p>
         );
 
       default:
