@@ -33,6 +33,7 @@ export default function Sidebar({
             github@Mocchu
           </Link>
         }
+        avatarProps={{ src: "../public/pfp.jpg" }}
         className="mb-4"
       />
 
