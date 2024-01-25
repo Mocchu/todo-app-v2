@@ -9,7 +9,7 @@ import { ModeToggle } from "./mode-toggle";
 import { Divider, User, Button, Link, useDisclosure } from "@nextui-org/react";
 import { Button as ButtonShad } from "@/components/ui/button";
 import NewProjectModal from "./NewProjectModal";
-import pfp from "../../public/pfp.jpg";
+import pfp from "../assets/pfp.jpg";
 
 export default function Sidebar({
   projects,
