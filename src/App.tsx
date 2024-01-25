@@ -60,31 +60,27 @@ export default function App() {
   // }
 
   return (
-    <div className="h-full">
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel defaultSize={22} className="min-w-min">
-          <Sidebar
-            projects={projects}
-            setProjects={setProjects}
-            activeProjectKey={activeProjectKey}
-            setActiveProjectKey={setActiveProjectKey}
-          />
-        </ResizablePanel>
+    <ResizablePanelGroup direction="horizontal">
+      <ResizablePanel defaultSize={22} className="min-h-svh min-w-min">
+        <Sidebar
+          projects={projects}
+          setProjects={setProjects}
+          activeProjectKey={activeProjectKey}
+          setActiveProjectKey={setActiveProjectKey}
+        />
+      </ResizablePanel>
 
-        <ResizableHandle withHandle />
+      <ResizableHandle withHandle />
 
-        <ResizablePanel>
-          <TodoList
-            // @ts-ignore
-            project={projects.find(
-              (project) => project.key === activeProjectKey,
-            )}
-            setProjects={setProjects}
-            activeProjectKey={activeProjectKey}
-            projects={projects}
-          />
-        </ResizablePanel>
-      </ResizablePanelGroup>
-    </div>
+      <ResizablePanel>
+        <TodoList
+          // @ts-ignore
+          project={projects.find((project) => project.key === activeProjectKey)}
+          setProjects={setProjects}
+          activeProjectKey={activeProjectKey}
+          projects={projects}
+        />
+      </ResizablePanel>
+    </ResizablePanelGroup>
   );
 }
