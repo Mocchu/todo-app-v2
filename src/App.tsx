@@ -7,10 +7,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { exampleData } from "./assets/exampleData";
-import { storageAvailable } from "./lib/todoUtils";
-
-import { convertToDateObject } from "./lib/todoUtils";
-import { isBefore } from "date-fns";
+import { getLocalStorage, setLocalStorage, setOverdue } from "./lib/todoUtils";
 
 export default function App() {
   const [projects, setProjects] = useState(() => {
@@ -20,49 +17,9 @@ export default function App() {
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
   // const allTodos = projects.flatMap((project) => project.todos);
 
-  useEffect(getLocalStorage, []);
-  useEffect(setLocalStorage, [projects]);
-
-  // This breaks editing
-  useEffect(setOverdue, [projects]);
-
-  function setOverdue() {
-    setProjects((currentProjects) => {
-      const updatedProjects = currentProjects.map((project) => {
-        return {
-          ...project,
-          todos: project.todos.map((todo) => {
-            if (
-              isBefore(convertToDateObject(todo.dueDate), new Date()) &&
-              !todo.completed
-            ) {
-              return { ...todo, overdue: true };
-            }
-            return todo;
-          }),
-        };
-      });
-
-      if (JSON.stringify(currentProjects) !== JSON.stringify(updatedProjects))
-        return updatedProjects;
-      return currentProjects;
-    });
-  }
-
-  function getLocalStorage() {
-    if (storageAvailable("localStorage")) {
-      const storedProjects = JSON.parse(localStorage.getItem("projects"));
-      if (storedProjects) {
-        setProjects(storedProjects);
-      }
-    }
-  }
-
-  function setLocalStorage() {
-    if (storageAvailable("localStorage")) {
-      localStorage.setItem("projects", JSON.stringify(projects));
-    }
-  }
+  useEffect(() => getLocalStorage(setProjects), []);
+  useEffect(() => setLocalStorage(projects), [projects]);
+  useEffect(() => setOverdue(setProjects), [projects]);
 
   return (
     <ResizablePanelGroup direction="horizontal">

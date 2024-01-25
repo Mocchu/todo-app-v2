@@ -51,7 +51,6 @@ export default function TodoList({
 
   const renderCell = useCallback((todo, columnKey) => {
     const cellValue = todo[columnKey];
-
     const statusColorMap = {
       Low: "success",
       Med: "warning",

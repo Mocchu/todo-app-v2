@@ -51,32 +51,5 @@ export default function EditPriorityPicker({
         </SelectGroup>
       </SelectContent>
     </Select>
-
-    // <Select
-    //   label="Priority"
-    //   size="sm"
-    //   variant="bordered"
-    //   radius="lg"
-    //   onChange={(e) => handleInputChange(e.target.value)}
-    // >
-    //   <SelectItem
-    //     key="Low"
-    //     startContent={<AlertCircle className="w-4 text-green-400" />}
-    //   >
-    //     Low
-    //   </SelectItem>
-    //   <SelectItem
-    //     key="Med"
-    //     startContent={<AlertCircle className="w-4 text-yellow-400" />}
-    //   >
-    //     Medium
-    //   </SelectItem>
-    //   <SelectItem
-    //     key="High"
-    //     startContent={<AlertCircle className="w-4 text-red-400" />}
-    //   >
-    //     High
-    //   </SelectItem>
-    // </Select>
   );
 }

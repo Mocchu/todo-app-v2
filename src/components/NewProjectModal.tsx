@@ -12,10 +12,6 @@ import { useState } from "react";
 export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
   const [title, setTitle] = useState("");
 
-  function clearTitleState() {
-    setTitle("");
-  }
-
   function handleSubmit(onClose) {
     setProjects((currentProjects) => {
       return [
@@ -32,7 +28,7 @@ export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         placement="top-center"
-        onClose={clearTitleState}
+        onClose={() => setTitle("")}
       >
         <ModalContent>
           {(onClose) => (
@@ -43,6 +39,7 @@ export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
                   Create a new project here. Click create when done.
                 </p>
               </ModalHeader>
+
               <ModalBody>
                 <Input
                   autoFocus
@@ -53,6 +50,7 @@ export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </ModalBody>
+
               <ModalFooter>
                 <Button
                   color="primary"
