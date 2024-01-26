@@ -69,6 +69,12 @@ export default function EditTodoPopover({
       });
     });
     setNewTodo(createEmptyTodo());
+
+    toast({
+      // @ts-ignore
+      title: `🗑️ Todo deleted: ${newTodo.title}`,
+      description: "This action is permanent!",
+    });
   }
 
   function findSelectedTodo() {
