@@ -32,6 +32,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 - [x] Resizable sidebar navigation
 - [x] Local storage
 - [x] Light and dark theme
+- [x] Toast popups on user interactions
 - [ ] Mobile support
 - [ ] Sort by dates
 - [ ] Move completed todos to the bottom
