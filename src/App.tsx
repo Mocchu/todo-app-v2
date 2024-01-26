@@ -20,21 +20,6 @@ export default function App() {
   useEffect(() => setLocalStorage(projects), [projects]);
   useEffect(() => setOverdue(setProjects), [projects]);
 
-  // useEffect(() => {
-  //   setProjects((currentProjects) => {
-  //     const newAllTodo = currentProjects.map((project) => {
-  //       if (project.key === "allTodos")
-  //         return {
-  //           ...project,
-  //           todos: projects.flatMap((project) => project.todos),
-  //         };
-  //       return project;
-  //     });
-  //     if (JSON.stringify(newAllTodo) !== JSON.stringify(projects))
-  //       return newAllTodo;
-  //   });
-  // }, [projects]);
-
   return (
     <ResizablePanelGroup direction="horizontal" className="fadeInUp-animation">
       <ResizablePanel defaultSize={22} className="min-h-svh min-w-min">
