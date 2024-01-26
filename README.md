@@ -1,7 +1,7 @@
 <!-- INTRO -->
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1saXN0LXRvZG8iPjxyZWN0IHg9IjMiIHk9IjUiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHJ4PSIxIi8+PHBhdGggZD0ibTMgMTcgMiAyIDQtNCIvPjxwYXRoIGQ9Ik0xMyA2aDgiLz48cGF0aCBkPSJNMTMgMTJoOCIvPjxwYXRoIGQ9Ik0xMyAxOGg4Ii8+PC9zdmc+" alt="Logo" width="80" height="80">
+  <a href="https://todo-mochi.netlify.app/">
+    <img src="./public/readme-icon.png" alt="Mochi Todo Icon" width="80" height="80" />
   </a>
 
   <h3 align="center">mochi-todo</h3>
