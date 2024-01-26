@@ -40,7 +40,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 
 ### Built With
 
-I selected the following technologies and components primarily based on their ease of use and aesthetics.
+I selected the following technologies and component libraries primarily based on their ease of use and aesthetics.
 
 - Framework: [React](https://react.dev/)
 - Build tool: [Vite](https://vitejs.dev/)
