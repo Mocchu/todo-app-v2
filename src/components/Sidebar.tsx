@@ -113,7 +113,7 @@ export default function Sidebar({
           {projects.map((project) => (
             <li
               key={project.key}
-              className="fadeInProject rounded-md transition-all hover:bg-zinc-800"
+              className="fadeInProject rounded-md transition-all hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <ButtonGroup
                 className="flex"
