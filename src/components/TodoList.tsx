@@ -66,7 +66,7 @@ export default function TodoList({
           <div className="flex justify-start">
             <Checkbox
               color="default"
-              size="sm"
+              size="md"
               className="ml-[1px]"
               defaultSelected={cellValue}
               onClick={() => handleCheckboxClick(todo.key)}
