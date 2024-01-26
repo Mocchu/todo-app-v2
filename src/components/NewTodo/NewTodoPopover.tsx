@@ -15,7 +15,11 @@ import { useState } from "react";
 import NewTodoForm from "./NewTodoForm";
 import { createEmptyTodo } from "@/lib/todoUtils";
 
-export default function NewTodoPopover({ setProjects, activeProjectKey }) {
+export default function NewTodoPopover({
+  setProjects,
+  activeProjectKey,
+  toast,
+}) {
   const [newTodo, setNewTodo] = useState(createEmptyTodo());
 
   function handleSubmit() {
@@ -27,6 +31,11 @@ export default function NewTodoPopover({ setProjects, activeProjectKey }) {
 
         return { ...project, todos: [...project.todos, newTodo] };
       });
+    });
+
+    toast({
+      title: `✨ New todo created: ${newTodo.title}`,
+      description: "Access your new todo within your project!",
     });
   }
 

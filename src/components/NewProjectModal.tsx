@@ -9,7 +9,12 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 
-export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
+export default function NewProjectModal({
+  isOpen,
+  onOpenChange,
+  setProjects,
+  toast,
+}) {
   const [title, setTitle] = useState("");
 
   function handleSubmit(onClose) {
@@ -19,6 +24,12 @@ export default function NewProjectModal({ isOpen, onOpenChange, setProjects }) {
         { title: title, key: crypto.randomUUID(), todos: [] },
       ];
     });
+
+    toast({
+      title: `🎉 New project created: ${title}`,
+      description: "Access your new project from the sidebar!",
+    });
+
     onClose();
   }
 

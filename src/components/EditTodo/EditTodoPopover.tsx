@@ -20,6 +20,7 @@ export default function EditTodoPopover({
   openNewTodoSheet,
   setOpenEditTodoSheet,
   projects,
+  toast,
 }) {
   const [newTodo, setNewTodo] = useState({});
 
@@ -48,6 +49,12 @@ export default function EditTodoPopover({
       });
     });
     setNewTodo(createEmptyTodo());
+
+    toast({
+      // @ts-ignore
+      title: `✨ Todo edited: ${newTodo.title}`,
+      description: "Access your updated todo within your project!",
+    });
   }
 
   function handleDelete() {

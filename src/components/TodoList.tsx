@@ -12,7 +12,12 @@ import NewTodoPopover from "./NewTodo/NewTodoPopover";
 import { useCallback, useState } from "react";
 import EditTodoPopover from "./EditTodo/EditTodoPopover";
 
-export default function TodoList({ setProjects, activeProjectKey, projects }) {
+export default function TodoList({
+  setProjects,
+  activeProjectKey,
+  projects,
+  toast,
+}) {
   const [selectedTodoKey, setselectedTodoKey] = useState("");
   const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
 
@@ -119,6 +124,17 @@ export default function TodoList({ setProjects, activeProjectKey, projects }) {
         <NewTodoPopover
           setProjects={setProjects}
           activeProjectKey={activeProjectKey}
+          toast={toast}
+        />
+
+        <EditTodoPopover
+          setProjects={setProjects}
+          activeProjectKey={activeProjectKey}
+          selectedTodoKey={selectedTodoKey}
+          openNewTodoSheet={openNewTodoSheet}
+          setOpenEditTodoSheet={setOpenEditTodoSheet}
+          projects={projects}
+          toast={toast}
         />
 
         <Table
@@ -159,15 +175,6 @@ export default function TodoList({ setProjects, activeProjectKey, projects }) {
             )}
           </TableBody>
         </Table>
-
-        <EditTodoPopover
-          setProjects={setProjects}
-          activeProjectKey={activeProjectKey}
-          selectedTodoKey={selectedTodoKey}
-          openNewTodoSheet={openNewTodoSheet}
-          setOpenEditTodoSheet={setOpenEditTodoSheet}
-          projects={projects}
-        />
       </div>
     </div>
   );

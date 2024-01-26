@@ -8,13 +8,15 @@ import {
 } from "@/components/ui/resizable";
 import { exampleData } from "./assets/exampleData";
 import { getLocalStorage, setLocalStorage, setOverdue } from "./lib/todoUtils";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "./components/ui/use-toast";
 
 export default function App() {
   const [projects, setProjects] = useState(() => {
     return JSON.parse(localStorage.getItem("projects")) || exampleData;
   });
-
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
+  const { toast } = useToast();
 
   useEffect(() => getLocalStorage(setProjects), []);
   useEffect(() => setLocalStorage(projects), [projects]);
@@ -28,6 +30,7 @@ export default function App() {
           setProjects={setProjects}
           activeProjectKey={activeProjectKey}
           setActiveProjectKey={setActiveProjectKey}
+          toast={toast}
         />
       </ResizablePanel>
 
@@ -38,7 +41,10 @@ export default function App() {
           setProjects={setProjects}
           activeProjectKey={activeProjectKey}
           projects={projects}
+          toast={toast}
         />
+
+        <Toaster />
       </ResizablePanel>
     </ResizablePanelGroup>
   );

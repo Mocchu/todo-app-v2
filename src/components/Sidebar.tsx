@@ -16,6 +16,7 @@ export default function Sidebar({
   setProjects,
   activeProjectKey,
   setActiveProjectKey,
+  toast,
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const svgColor = "#a8a8a8";
@@ -89,10 +90,12 @@ export default function Sidebar({
           >
             <Plus className="w-3" />
           </ButtonShad>
+
           <NewProjectModal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             setProjects={setProjects}
+            toast={toast}
           />
         </div>
 
