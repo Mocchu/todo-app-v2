@@ -17,7 +17,7 @@
 
 ## About The Project
 
-I initially started this project to learn more about modular javascript in vanilla JS. However, shortly into the project it became apparent that developing a project of this scale would be incredibly cumbersome without the use of an external frontend framework.
+I initially started this project to learn more about modular javascript in vanilla JS. However, it quickly became apparent that developing a project of this scale would be incredibly cumbersome without the use of a frontend framework.
 
 Logically, I then restarted the project using React purely due to it's popularity. This was my first exposure to a frontend framework and i've learned alot.
 
