@@ -23,7 +23,7 @@ export default function App() {
   useEffect(() => setOverdue(setProjects), [projects]);
 
   return (
-    <ResizablePanelGroup direction="horizontal" className="fadeInUp-animation">
+    <ResizablePanelGroup direction="horizontal" className="fadeInPage">
       <ResizablePanel defaultSize={22} className="min-h-svh min-w-min">
         <Sidebar
           projects={projects}
