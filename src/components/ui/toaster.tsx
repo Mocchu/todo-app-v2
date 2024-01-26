@@ -18,7 +18,7 @@ export function Toaster() {
           <Toast
             key={id}
             {...props}
-            duration={5000}
+            duration={3000}
             className="dark:border-zinc-700 dark:bg-zinc-800"
           >
             <div className="grid gap-1">

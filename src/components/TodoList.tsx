@@ -161,7 +161,7 @@ export default function TodoList({
                 key={todo.key}
                 className={
                   // @ts-ignore comment
-                  "cursor-pointer " +
+                  "fadeInPage cursor-pointer transition-all " +
                   // @ts-ignore comment
                   (todo.completed ? "line-through decoration-neutral-500" : "")
                 }
