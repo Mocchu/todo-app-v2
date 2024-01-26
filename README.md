@@ -34,7 +34,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 - [x] Light and dark theme
 - [x] Toast popups on user interactions
 - [ ] Mobile support
-- [ ] Sort by dates
+- [ ] Sort by dates & priority
 - [ ] Move completed todos to the bottom
 - [ ] Make "Today", "Upcoming" and "Completed" buttons functional
 
@@ -56,8 +56,6 @@ I selected the following technologies and component libraries primarily based on
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
 - Install npm
   ```sh
   npm install npm@latest -g
@@ -65,7 +63,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_If you want to tinker with the source code here is how you can do so:_
+If you want to tinker with the source code here is how you can do so:
 
 1. Clone the repo
    ```sh
