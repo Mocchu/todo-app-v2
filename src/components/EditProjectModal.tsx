@@ -22,10 +22,10 @@ export default function EditProjectModal({
 
   function handleSubmit(onClose) {
     setProjects((currentProjects) => {
-      return [
-        ...currentProjects,
-        { title: title, key: crypto.randomUUID(), todos: [] },
-      ];
+      return currentProjects.map((project) => {
+        if (project.key !== activeProject.key) return project;
+        return { ...project, title: title };
+      });
     });
 
     toast({
