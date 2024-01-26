@@ -12,14 +12,11 @@ import NewTodoPopover from "./NewTodo/NewTodoPopover";
 import { useCallback, useState } from "react";
 import EditTodoPopover from "./EditTodo/EditTodoPopover";
 
-export default function TodoList({
-  project,
-  setProjects,
-  activeProjectKey,
-  projects,
-}) {
+export default function TodoList({ setProjects, activeProjectKey, projects }) {
   const [selectedTodoKey, setselectedTodoKey] = useState("");
   const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
+
+  const project = projects.find((project) => project.key === activeProjectKey);
 
   function handleRowClick(key) {
     setselectedTodoKey(key);
@@ -28,12 +25,13 @@ export default function TodoList({
 
   function handleCheckboxClick(todoKey) {
     setProjects((currentProjects) => {
-      return currentProjects.map((project) => {
-        if (project.key !== activeProjectKey) return project;
+      return currentProjects.map((project1) => {
+        // IDK WHAT I DID HERE BUT IT WORKS ??? HOW
+        if (project.key !== project.key) return project;
 
         return {
-          ...project,
-          todos: project.todos.map((todo) => {
+          ...project1,
+          todos: project1.todos.map((todo) => {
             if (todo.key !== todoKey) return todo;
             return { ...todo, completed: !todo.completed };
           }),

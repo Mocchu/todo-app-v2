@@ -1,6 +1,4 @@
 export const exampleData = [
-  { title: "All todos", key: "allTodos", todos: [] },
-
   {
     title: "Learn React",
     key: "360b3fe2-987e-430f-8bc9-76a94c2fa2a1",

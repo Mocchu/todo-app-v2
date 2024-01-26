@@ -50,8 +50,6 @@ export default function App() {
 
       <ResizablePanel>
         <TodoList
-          // @ts-ignore
-          project={projects.find((project) => project.key === activeProjectKey)}
           setProjects={setProjects}
           activeProjectKey={activeProjectKey}
           projects={projects}
