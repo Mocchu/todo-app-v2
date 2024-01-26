@@ -19,6 +19,7 @@ import { Button as ButtonShad } from "@/components/ui/button";
 import NewProjectModal from "./NewProjectModal";
 import pfp from "../assets/pfp.jpg";
 import { useState } from "react";
+import EditProjectModal from "./EditProjectModal";
 
 export default function Sidebar({
   projects,
@@ -27,12 +28,44 @@ export default function Sidebar({
   setActiveProjectKey,
   toast,
 }) {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {
+    isOpen: newProjectIsOpen,
+    onOpen: newProjectOnOpen,
+    onOpenChange: newProjectOnOpenChange,
+  } = useDisclosure();
+  const {
+    isOpen: editProjectIsOpen,
+    onOpen: editProjectOnOpen,
+    onOpenChange: editProjectOnOpenChange,
+  } = useDisclosure();
+
   const [isProjectHovered, setIsProjectHovered] = useState("");
+  const [editProjectDetails, setEditProjectDetails] = useState({});
   const svgColor = "#a8a8a8";
+
+  function handleEditProjectClick(project) {
+    setEditProjectDetails(project);
+    editProjectOnOpen();
+  }
 
   return (
     <div className="flex h-full flex-col items-start gap-4 bg-zinc-100 p-8 dark:bg-zinc-900">
+      <NewProjectModal
+        isOpen={newProjectIsOpen}
+        onOpenChange={newProjectOnOpenChange}
+        setProjects={setProjects}
+        toast={toast}
+      />
+
+      <EditProjectModal
+        isOpen={editProjectIsOpen}
+        onOpenChange={editProjectOnOpenChange}
+        setActiveProjectKey={setActiveProjectKey}
+        setProjects={setProjects}
+        toast={toast}
+        activeProject={editProjectDetails}
+      />
+
       <User
         name="Joseph"
         description={
@@ -94,19 +127,13 @@ export default function Sidebar({
           <h2 className="text-sm font-semibold">Projects</h2>
 
           <ButtonShad
-            onClick={onOpen}
+            onClick={newProjectOnOpen}
             size="icon"
             variant="secondary"
             className="h-5 w-5"
           >
             <Plus className="w-3" />
           </ButtonShad>
-          <NewProjectModal
-            isOpen={isOpen}
-            onOpenChange={onOpenChange}
-            setProjects={setProjects}
-            toast={toast}
-          />
         </div>
 
         <ul className="flex w-full flex-col">
@@ -133,6 +160,7 @@ export default function Sidebar({
                 <Button
                   isIconOnly
                   variant={project.key === activeProjectKey ? "solid" : "light"}
+                  onClick={() => handleEditProjectClick(project)}
                 >
                   {isProjectHovered === project.key && (
                     <MoreVertical className="w-4 text-neutral-400" />

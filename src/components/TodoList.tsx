@@ -22,6 +22,7 @@ export default function TodoList({
   const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
 
   const project = projects.find((project) => project.key === activeProjectKey);
+  console.log(project);
 
   function handleRowClick(key) {
     setselectedTodoKey(key);
