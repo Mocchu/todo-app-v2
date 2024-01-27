@@ -3,7 +3,7 @@ import { useState } from "react";
 import EditTodoPopover from "../EditTodo/EditTodoPopover";
 import TodoTable from "./TodoTable";
 import { Button } from "@nextui-org/react";
-import { StepBack, Undo2 } from "lucide-react";
+import { StepBack, Undo2, icons } from "lucide-react";
 
 export default function TodoList({
   setProjects,
@@ -59,6 +59,7 @@ export default function TodoList({
           setProjects={setProjects}
           activeProjectKey={activeProjectKey}
           toast={toast}
+          isMobile={isMobile}
         />
 
         <EditTodoPopover
@@ -69,6 +70,7 @@ export default function TodoList({
           setOpenEditTodoSheet={setOpenEditTodoSheet}
           projects={projects}
           toast={toast}
+          isMobile={isMobile}
         />
 
         <TodoTable

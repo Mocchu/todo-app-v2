@@ -19,6 +19,7 @@ export default function NewTodoPopover({
   setProjects,
   activeProjectKey,
   toast,
+  isMobile,
 }) {
   const [newTodo, setNewTodo] = useState(createEmptyTodo());
 
@@ -48,7 +49,7 @@ export default function NewTodoPopover({
         </Button>
       </SheetTrigger>
 
-      <SheetContent>
+      <SheetContent side={isMobile ? "bottom" : "right"}>
         <SheetHeader>
           <SheetTitle>Create a new task</SheetTitle>
           <SheetDescription>

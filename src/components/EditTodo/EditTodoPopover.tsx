@@ -21,6 +21,7 @@ export default function EditTodoPopover({
   setOpenEditTodoSheet,
   projects,
   toast,
+  isMobile,
 }) {
   const [newTodo, setNewTodo] = useState({});
 
@@ -88,7 +89,7 @@ export default function EditTodoPopover({
 
   return (
     <Sheet open={openNewTodoSheet} onOpenChange={setOpenEditTodoSheet}>
-      <SheetContent>
+      <SheetContent side={isMobile ? "bottom" : "right"}>
         <SheetHeader>
           <SheetTitle>Edit a task</SheetTitle>
           <SheetDescription>
@@ -101,15 +102,19 @@ export default function EditTodoPopover({
           selectedTodo={findSelectedTodo()}
         />
 
-        <SheetFooter className="pt-4">
-          <SheetClose asChild className="flex gap-4">
+        <SheetFooter className={"pt-4 " + (isMobile && "flex-col gap-4")}>
+          <SheetClose asChild className="flex gap-4 ">
             <ButtonNext
-              className="flex min-w-min gap-2 bg-danger text-white dark:text-white "
+              className={
+                "flex min-w-min gap-2 bg-danger text-white dark:text-white " +
+                (isMobile && "w-full")
+              }
               startContent={<Trash className="w-4 pt-[3px]" />}
               onPress={handleDelete}
               isIconOnly
             ></ButtonNext>
           </SheetClose>
+
           <ButtonNext
             type="submit"
             className="flex min-w-min gap-2 bg-black text-white dark:bg-white dark:text-black "
