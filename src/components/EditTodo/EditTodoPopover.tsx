@@ -89,7 +89,7 @@ export default function EditTodoPopover({
 
   return (
     <Sheet open={openNewTodoSheet} onOpenChange={setOpenEditTodoSheet}>
-      <SheetContent side={isMobile ? "top" : "right"}>
+      <SheetContent side="right" className={isMobile ? "w-full" : ""}>
         <SheetHeader>
           <SheetTitle>Edit a task</SheetTitle>
           <SheetDescription>

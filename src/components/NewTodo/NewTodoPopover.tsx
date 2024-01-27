@@ -49,7 +49,7 @@ export default function NewTodoPopover({
         </Button>
       </SheetTrigger>
 
-      <SheetContent side={isMobile ? "top" : "right"}>
+      <SheetContent side="right" className={isMobile ? "w-full" : ""}>
         <SheetHeader>
           <SheetTitle>Create a new task</SheetTitle>
           <SheetDescription>
