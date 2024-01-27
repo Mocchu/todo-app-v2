@@ -7,7 +7,7 @@
   <h3 align="center">mochi-todo</h3>
 
   <p align="center">
-    An interactive modern task management dashboard
+    A modern and responsive task management platform
     <br />
     <a href="https://todo-mochi.netlify.app/"><strong>View the demo »</strong></a>
   </p>
@@ -19,7 +19,7 @@
 
 I initially started this project to learn more about modular javascript in vanilla JS. However, it quickly became apparent that developing a project of this scale would be incredibly cumbersome without the use of a frontend framework.
 
-Logically, I then restarted the project using React purely due to it's popularity. This was my first exposure to a frontend framework and i've learned alot.
+Logically, I restarted the project using React purely due to it's popularity. This was my first exposure to a frontend framework and i've learned alot.
 
 <img src="public/dark.png" width="825" />
 
