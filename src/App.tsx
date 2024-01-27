@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "./components/SidebarMenu/Sidebar";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoDashboard/TodoList";
 import {
   ResizableHandle,
   ResizablePanel,
