@@ -65,7 +65,7 @@ export default function NewTodoPopover({
               type="submit"
               className="flex min-w-min gap-1 bg-black text-white dark:bg-white dark:text-black "
               startContent={<Plus className="w-4" />}
-              onPress={handleSubmit}
+              onClick={handleSubmit}
             >
               Add task
             </ButtonNext>

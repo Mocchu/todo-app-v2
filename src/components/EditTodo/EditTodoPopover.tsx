@@ -119,7 +119,7 @@ export default function EditTodoPopover({
             type="submit"
             className="flex min-w-min gap-2 bg-black text-white dark:bg-white dark:text-black "
             startContent={<Edit className="w-4 pt-[3px]" />}
-            onPress={handleSubmit}
+            onClick={handleSubmit}
           >
             Edit Task
           </ButtonNext>
