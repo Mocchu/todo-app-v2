@@ -47,7 +47,7 @@ export default function TodoTable({
 
       case "title":
         return (
-          <div className="flex max-h-10 max-w-44 flex-col">
+          <div className="flex max-h-10 flex-col">
             <p className="text-bold truncate text-nowrap break-all text-sm">
               {cellValue}
             </p>
@@ -113,7 +113,9 @@ export default function TodoTable({
             onClick={(e) => handleRowClick(todo.key)}
           >
             {(columnKey) => (
-              <TableCell>{renderCell(todo, columnKey)}</TableCell>
+              <TableCell className="max-w-44">
+                {renderCell(todo, columnKey)}
+              </TableCell>
             )}
           </TableRow>
         )}
