@@ -42,13 +42,17 @@ export default function TodoList({
 
   return (
     <div className="@container">
-      {isMobile && (
-        <Button isIconOnly onClick={() => setShowTodoListMobile(false)}>
-          <Undo2 />
-        </Button>
-      )}
-
-      <div className="flex h-full flex-col gap-4 px-4 py-20 @4xl:px-16 @5xl:px-52">
+      <div
+        className={
+          "flex h-full flex-col gap-4 px-4 @4xl:px-16 @5xl:px-52 " +
+          (isMobile ? "pt-4" : "py-20")
+        }
+      >
+        {isMobile && (
+          <Button isIconOnly onClick={() => setShowTodoListMobile(false)}>
+            <Undo2 />
+          </Button>
+        )}
         <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
 
         <NewTodoPopover
