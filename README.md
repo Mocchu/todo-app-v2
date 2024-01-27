@@ -27,13 +27,13 @@ Logically, I restarted the project using React purely due to it's popularity. Th
 
 At the moment, I have no plans to integrate authentication or a database of any sort.
 
+- [x] Mobile support
 - [x] Creating, editing and deleting tasks and projects
 - [x] Overdue task indicators via date colour
 - [x] Resizable sidebar navigation
 - [x] Local storage
 - [x] Light and dark theme
 - [x] Toast popups on user interactions
-- [x] Mobile support
 - [x] Enable form submission via "enter" keypress
 - [ ] Sort by dates & priority
 - [ ] Automatically sort completed todos
