@@ -33,7 +33,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 - [x] Local storage
 - [x] Light and dark theme
 - [x] Toast popups on user interactions
-- [ ] Mobile support
+- [x] Mobile support
 - [ ] Sort by dates & priority
 - [ ] Move completed todos to the bottom
 - [ ] Make "Today", "Upcoming" and "Completed" buttons functional
