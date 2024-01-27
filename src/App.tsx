@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/SidebarMenu/Sidebar";
 import TodoList from "./components/TodoList";
 import {
   ResizableHandle,
