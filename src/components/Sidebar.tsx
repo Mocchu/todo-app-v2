@@ -16,10 +16,10 @@ import {
   ButtonGroup,
 } from "@nextui-org/react";
 import { Button as ButtonShad } from "@/components/ui/button";
-import NewProjectModal from "./NewProjectModal";
+import NewProjectModal from "./Project/NewProjectModal";
 import pfp from "../assets/pfp.jpg";
 import { useState } from "react";
-import EditProjectModal from "./EditProjectModal";
+import EditProjectModal from "./Project/EditProjectModal";
 
 export default function Sidebar({
   projects,
