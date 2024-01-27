@@ -59,6 +59,7 @@ export default function EditTodoPopover({
   }
 
   function handleDelete() {
+    setOpenEditTodoSheet(false);
     setProjects((currentProjects) => {
       return currentProjects.map((project) => {
         if (project.key !== activeProjectKey) return project;
@@ -116,7 +117,7 @@ export default function EditTodoPopover({
                   (isMobile && "w-full")
                 }
                 startContent={<Trash className="w-4 pt-[3px]" />}
-                onPress={handleDelete}
+                onClick={handleDelete}
                 isIconOnly
               ></ButtonNext>
             </SheetClose>
