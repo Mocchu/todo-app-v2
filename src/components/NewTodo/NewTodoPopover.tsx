@@ -11,7 +11,7 @@ import {
 import { Plus } from "lucide-react";
 import { Button } from "../ui/button";
 import { Button as ButtonNext } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewTodoForm from "./NewTodoForm";
 import { createEmptyTodo } from "@/lib/todoUtils";
 
@@ -23,6 +23,7 @@ export default function NewTodoPopover({
 }) {
   const [newTodo, setNewTodo] = useState(createEmptyTodo());
   const [openNewTodoSheet, setOpenNewTodoSheet] = useState(false);
+  useEffect(() => setNewTodo(createEmptyTodo()), [openNewTodoSheet]);
 
   function handleSubmit() {
     if (newTodo.title === "") return;
@@ -34,6 +35,7 @@ export default function NewTodoPopover({
         return { ...project, todos: [...project.todos, newTodo] };
       });
     });
+    setNewTodo(createEmptyTodo());
 
     toast({
       title: `✨ New todo created: ${newTodo.title}`,

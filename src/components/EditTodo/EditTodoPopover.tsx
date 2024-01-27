@@ -28,12 +28,13 @@ export default function EditTodoPopover({
   // This is probably a terrible way of setting initial state
   useEffect(() => {
     setNewTodo(findSelectedTodo());
-  }, [selectedTodoKey, projects]);
+  }, [selectedTodoKey, projects, openNewTodoSheet]);
 
   function handleSubmit() {
     setOpenEditTodoSheet(false);
     // @ts-ignore
     if (newTodo.title === "") return;
+    if (JSON.stringify(newTodo) === JSON.stringify(findSelectedTodo())) return;
 
     // Find the todo in state and return a new projects array with the edited todo
     setProjects((currentProjects) => {
