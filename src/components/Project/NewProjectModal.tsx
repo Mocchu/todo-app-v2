@@ -38,7 +38,6 @@ export default function NewProjectModal({
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        placement="top-center"
         onClose={() => setTitle("")}
       >
         <ModalContent>

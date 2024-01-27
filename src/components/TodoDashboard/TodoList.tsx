@@ -3,7 +3,7 @@ import { useState } from "react";
 import EditTodoPopover from "../EditTodo/EditTodoPopover";
 import TodoTable from "./TodoTable";
 import { Button } from "@nextui-org/react";
-import { StepBack, Undo2, icons } from "lucide-react";
+import { Undo2 } from "lucide-react";
 
 export default function TodoList({
   setProjects,
