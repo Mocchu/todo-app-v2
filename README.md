@@ -35,7 +35,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 - [x] Toast popups on user interactions
 - [x] Mobile support
 - [ ] Sort by dates & priority
-- [ ] Automatical sort completed todos
+- [ ] Automatically sort completed todos
 - [ ] Make "Today", "Upcoming" and "Completed" buttons functional
 - [ ] Actually use typescript
 
