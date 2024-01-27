@@ -2,13 +2,18 @@ import NewTodoPopover from "../NewTodo/NewTodoPopover";
 import { useState } from "react";
 import EditTodoPopover from "../EditTodo/EditTodoPopover";
 import TodoTable from "./TodoTable";
+import { Button } from "@nextui-org/react";
+import { StepBack, Undo2 } from "lucide-react";
 
 export default function TodoList({
   setProjects,
   activeProjectKey,
   projects,
   toast,
+  isMobile,
+  setShowTodoListMobile,
 }) {
+  console.log(isMobile);
   const [selectedTodoKey, setselectedTodoKey] = useState("");
   const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
   const project = projects.find((project) => project.key === activeProjectKey);
@@ -37,6 +42,12 @@ export default function TodoList({
 
   return (
     <div className="@container">
+      {isMobile && (
+        <Button isIconOnly onClick={() => setShowTodoListMobile(false)}>
+          <Undo2 />
+        </Button>
+      )}
+
       <div className="flex h-full flex-col gap-4 px-4 py-20 @4xl:px-16 @5xl:px-52">
         <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
 

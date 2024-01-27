@@ -19,7 +19,7 @@ export default function App() {
   const [activeProjectKey, setActiveProjectKey] = useState(projects[0].key);
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const [showTodoListMobile, setShowTodoListMobile] = useState(false);
+  const [showTodoListMobile, setShowTodoListMobile] = useState(!isMobile);
 
   const { toast } = useToast();
 
@@ -33,7 +33,7 @@ export default function App() {
         defaultSize={22}
         className={
           "min-h-svh min-w-min " +
-          (showTodoListMobile && isMobile ? "hidden" : "")
+          (isMobile && showTodoListMobile ? "hidden" : "")
         }
       >
         <Sidebar
@@ -49,14 +49,14 @@ export default function App() {
 
       {!isMobile && <ResizableHandle withHandle />}
 
-      <ResizablePanel
-        className={showTodoListMobile && isMobile ? "" : "hidden"}
-      >
+      <ResizablePanel className={showTodoListMobile ? "" : "hidden"}>
         <TodoList
           setProjects={setProjects}
           activeProjectKey={activeProjectKey}
           projects={projects}
           toast={toast}
+          isMobile={isMobile}
+          setShowTodoListMobile={setShowTodoListMobile}
         />
 
         <Toaster />
