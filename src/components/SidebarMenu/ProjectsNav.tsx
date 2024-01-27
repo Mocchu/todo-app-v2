@@ -10,8 +10,17 @@ export default function ProjectsNav({
   svgColor,
   setActiveProjectKey,
   handleEditProjectClick,
+  isMobile,
+  setShowTodoListMobile,
 }) {
   const [isProjectHovered, setIsProjectHovered] = useState("");
+
+  function handleProjectClick(project) {
+    setActiveProjectKey(project.key);
+    setIsProjectHovered(project.key);
+
+    isMobile && setShowTodoListMobile(true);
+  }
 
   return (
     <nav className="w-full">
@@ -44,10 +53,7 @@ export default function ProjectsNav({
                 variant={project.key === activeProjectKey ? "solid" : "light"}
                 startContent={<List color={svgColor} className="mr-1 w-5" />}
                 className="flex justify-start"
-                onClick={() => {
-                  setActiveProjectKey(project.key);
-                  setIsProjectHovered(project.key);
-                }}
+                onClick={() => handleProjectClick(project)}
               >
                 {project.title}
               </Button>

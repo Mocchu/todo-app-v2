@@ -13,6 +13,8 @@ export default function Sidebar({
   activeProjectKey,
   setActiveProjectKey,
   toast,
+  isMobile,
+  setShowTodoListMobile,
 }) {
   const {
     isOpen: newProjectIsOpen,
@@ -64,6 +66,8 @@ export default function Sidebar({
         svgColor={svgColor}
         setActiveProjectKey={setActiveProjectKey}
         handleEditProjectClick={handleEditProjectClick}
+        isMobile={isMobile}
+        setShowTodoListMobile={setShowTodoListMobile}
       />
 
       <ul className="mt-auto">
