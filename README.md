@@ -34,6 +34,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 - [x] Light and dark theme
 - [x] Toast popups on user interactions
 - [x] Mobile support
+- [x] Enable form submission via "enter" keypress
 - [ ] Sort by dates & priority
 - [ ] Automatically sort completed todos
 - [ ] Make "Today", "Upcoming" and "Completed" buttons functional

@@ -33,6 +33,11 @@ export default function NewProjectModal({
     onClose();
   }
 
+  function handleFormSubmit(e, onClose) {
+    e.preventDefault();
+    handleSubmit(onClose);
+  }
+
   return (
     <>
       <Modal
@@ -43,7 +48,7 @@ export default function NewProjectModal({
       >
         <ModalContent>
           {(onClose) => (
-            <>
+            <form onSubmit={(e) => handleFormSubmit(e, onClose)}>
               <ModalHeader className="flex flex-col gap-1">
                 <p>Create new project</p>
                 <p className="text-sm font-normal text-default-400">
@@ -75,7 +80,7 @@ export default function NewProjectModal({
                   Create project
                 </Button>
               </ModalFooter>
-            </>
+            </form>
           )}
         </ModalContent>
       </Modal>
