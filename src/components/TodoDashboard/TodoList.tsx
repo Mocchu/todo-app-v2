@@ -13,7 +13,6 @@ export default function TodoList({
   isMobile,
   setShowTodoListMobile,
 }) {
-  console.log(isMobile);
   const [selectedTodoKey, setselectedTodoKey] = useState("");
   const [openNewTodoSheet, setOpenEditTodoSheet] = useState(false);
   const project = projects.find((project) => project.key === activeProjectKey);
