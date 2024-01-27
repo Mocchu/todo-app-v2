@@ -37,14 +37,17 @@ export default function ProjectsNav({
             <ButtonGroup
               className="flex"
               onMouseEnter={() => setIsProjectHovered(project.key)}
-              onMouseLeave={() => setIsProjectHovered(project.key)}
+              onMouseLeave={() => setIsProjectHovered("")}
             >
               <Button
                 fullWidth
                 variant={project.key === activeProjectKey ? "solid" : "light"}
                 startContent={<List color={svgColor} className="mr-1 w-5" />}
                 className="flex justify-start"
-                onClick={() => setActiveProjectKey(project.key)}
+                onClick={() => {
+                  setActiveProjectKey(project.key);
+                  setIsProjectHovered(project.key);
+                }}
               >
                 {project.title}
               </Button>

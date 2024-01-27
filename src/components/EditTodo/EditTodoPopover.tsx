@@ -31,7 +31,6 @@ export default function EditTodoPopover({
 
   function handleSubmit() {
     setOpenEditTodoSheet(false);
-
     // @ts-ignore
     if (newTodo.title === "") return;
 
