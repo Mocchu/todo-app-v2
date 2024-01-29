@@ -38,6 +38,7 @@ At the moment, I have no plans to integrate authentication or a database of any 
 - [ ] Sort by dates & priority
 - [ ] Automatically sort completed todos
 - [ ] Make "Today", "Upcoming" and "Completed" buttons functional
+- [ ] Refactor params to useContext()
 - [ ] Actually use typescript
 
 ### Built With
